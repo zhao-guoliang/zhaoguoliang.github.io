@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, Hexo">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="Linux配置环境变量, Hexo">
+    <meta name="description" content="当你在终端中输入 echo $PATH 并按回车，你会看到一系列由冒号分隔的目录路径。$PATH 是一个环境变量，它告诉你的系统在哪里查找可执行命令。每当你在终端输入一个命令，系统就会在 $PATH 变量列出的目录中搜索对应的可执行文件。
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | Hexo</title>
+    <title>Linux配置环境变量 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -332,12 +333,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">Linux配置环境变量</h1>
                 </div>
             </div>
         </div>
@@ -373,7 +374,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-07-25
+                    2024-07-26
                 </div>
                 
 
@@ -394,19 +395,26 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+                <p>当你在终端中输入 <code>echo $PATH</code> 并按回车，你会看到一系列由冒号分隔的目录路径。<code>$PATH</code> 是一个环境变量，它告诉你的系统在哪里查找可执行命令。每当你在终端输入一个命令，系统就会在 <code>$PATH</code> 变量列出的目录中搜索对应的可执行文件。</p>
+<p><code>$PATH</code> 变量的值通常包括以下目录：</p>
+<ul>
+<li><code>/usr/local/bin</code>: 用户安装的本地应用程序的可执行文件。</li>
+<li><code>/usr/bin</code>: 系统提供的标准应用程序。</li>
+<li><code>/bin</code>: 基础的系统命令。</li>
+<li><code>/usr/sbin</code>: 系统管理员使用的系统命令。</li>
+<li><code>/sbin</code>: 基础的系统管理命令。</li>
+<li><code>~/bin</code>: 用户个人的可执行文件目录。</li>
+<li><code>/usr/local/sbin</code>: 类似于 <code>/usr/local/bin</code>，但用于系统管理命令。</li>
+</ul>
+<p>例如，<code>$PATH</code> 的输出可能类似于：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>这意味着当你在终端中输入 <code>ls</code>、<code>cd</code> 或任何其他命令时，系统会在这些目录中查找匹配的可执行文件。</p>
+<p>你可以通过以下步骤将 &#x2F;usr&#x2F;local&#x2F;lib 添加到 PATH 环境变量中：<br>打开终端。<br>使用以下命令将 &#x2F;usr&#x2F;local&#x2F;lib 添加到当前会话的 PATH 环境变量：<br><code>export PATH=$PATH:/usr/local/lib</code><br>这只会在当前终端会话中生效。如果你关闭终端，设置将会丢失。</p>
+<p>如果你希望永久性地将 &#x2F;usr&#x2F;local&#x2F;lib 添加到 PATH 环境变量中，你需要将上述命令添加到你的 shell 配置文件中。具体步骤如下：<br>对于 bash，编辑 ~&#x2F;.bashrc 文件：<br><code>echo &#39;export PATH=$PATH:/usr/local/lib&#39; &gt;&gt; ~/.bashrc</code></p>
+<p>使配置文件生效：</p>
+<p><code>source ~/.bashrc</code></p>
+<p>这样，&#x2F;usr&#x2F;local&#x2F;lib 将被永久添加到 PATH 环境变量中，并在你每次打开新的终端会话时生效。</p>
 
                 
             </div>
@@ -433,7 +441,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2024/07/25/hello-world/">http://example.com/2024/07/25/hello-world/</a>
+                    <a href="http://example.com/2024/07/26/linux-pei-zhi-huan-jing-bian-liang/">http://example.com/2024/07/26/linux-pei-zhi-huan-jing-bian-liang/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -514,54 +522,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2024/07/25/wo-de-di-yi-pian-wen-zhang/">
+                <a href="/2024/07/26/linux-pei-zhi-huan-jing-bian-liang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="我的第一篇文章">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Linux配置环境变量">
                         
-                        <span class="card-title">我的第一篇文章</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-07-25
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            zhaoguoliang
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2024/07/25/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">Linux配置环境变量</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -572,7 +544,45 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-07-25
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-07-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            zhaoguoliang
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/07/26/linux-pei-zhi-huan-jing-bian-liang/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Linux配置环境变量">
+                        
+                        <span class="card-title">Linux配置环境变量</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-07-26
                             </span>
                         <span class="publish-author">
                             
