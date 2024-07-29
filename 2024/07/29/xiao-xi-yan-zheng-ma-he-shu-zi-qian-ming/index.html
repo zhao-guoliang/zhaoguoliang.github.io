@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>设计模式 | Hexo</title>
+  <title>消息验证码和数字签名 | Hexo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="设计模式 | Hexo">
+  <meta name="description" content="消息验证码和数字签名 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about">
@@ -364,9 +364,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-消息验证码和数字签名" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">设计模式</h1>
+        <h1 class="article-title">消息验证码和数字签名</h1>
     
     <div class="article-meta">
         
@@ -376,7 +376,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-07-29 13:23:21'>2024-07-29 10:29</time>
+            Created At : <time class="date" title='Updated At: 2024-07-29 20:02:34'>2024-07-29 20:02</time>
         
     </div>
     <div class="article-meta">
@@ -414,74 +414,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>工厂设计模式</strong></p>
-<pre><code class="c++">#include &lt;iostream&gt;
-#include &lt;memory&gt;
-
-using namespace std; // 引入 std 命名空间
-
-// 抽象产品类
-class Product &#123;
-public:
-    virtual void display() = 0;
-    virtual ~Product() &#123;&#125;
-&#125;;
-
-// 具体产品类 A
-class ConcreteProductA : public Product &#123;
-public:
-    void display() override &#123;
-        cout &lt;&lt; &quot;Concrete Product A&quot; &lt;&lt; endl;
-    &#125;
-&#125;;
-
-// 具体产品类 B
-class ConcreteProductB : public Product &#123;
-public:
-    void display() override &#123;
-        cout &lt;&lt; &quot;Concrete Product B&quot; &lt;&lt; endl;
-    &#125;
-&#125;;
-
-// 工厂类
-class Factory &#123;
-public:
-    // 静态方法，根据参数创建具体产品对象
-    static unique_ptr&lt;Product&gt; createProduct(char type) &#123;
-        switch (type) &#123;
-            case &#39;A&#39;:
-                return make_unique&lt;ConcreteProductA&gt;();
-            case &#39;B&#39;:
-                return make_unique&lt;ConcreteProductB&gt;();
-            default:
-                return nullptr;
-        &#125;
-    &#125;
-&#125;;
-
-int main() &#123;
-    // 使用工厂创建具体产品 A
-    unique_ptr&lt;Product&gt; productA = Factory::createProduct(&#39;A&#39;);
-    if (productA) &#123;
-        productA-&gt;display();
-    &#125;
-
-    // 使用工厂创建具体产品 B
-    unique_ptr&lt;Product&gt; productB = Factory::createProduct(&#39;B&#39;);
-    if (productB) &#123;
-        productB-&gt;display();
-    &#125;
-
-    // 使用工厂创建不存在的产品
-    unique_ptr&lt;Product&gt; productC = Factory::createProduct(&#39;C&#39;);
-    if (!productC) &#123;
-        cout &lt;&lt; &quot;Invalid product type requested.&quot; &lt;&lt; endl;
-    &#125;
-
-    return 0;
-&#125;
-</code></pre>
-
+        
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
     </div>
