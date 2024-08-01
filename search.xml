@@ -47,7 +47,7 @@
       <link href="/2024/02/01/127-bao-cuo/"/>
       <url>/2024/02/01/127-bao-cuo/</url>
       
-        <content type="html"><![CDATA[<p>解决spawn-fcgi:child exited with: 127报错</p><p>spawn-fcgi:child exited with: 127<br>原因：没有找到动态库</p><p>输入指令：ldd 你要运行的程序名<br>来查看缺少的库，如图我确少的是 libfcgi.so.0<br><img src="/images/1722491883237.png" alt="1722491883237"></p><p>解决方案<br>先执行命令，查找所缺文件位置，比如我的（你实际操作时候一定要记住库名换成自己的，-name后面）</p><p><code>find usr/local/lib/ -name &quot;libfcgi.so&quot;</code></p><p><img src="/images/1722492061360.png" alt="1722492061360"></p><p>得到库文件所在路径<code>/usr/local/lib</code></p><p>再执行<code>sudo vi /etc/ld.so.conf</code><br>在文件里添加你得到的库文件路径<code>/usr/local/lib</code>，之后保存退出</p><p><img src="/images/1722492201079.png" alt="1722492201079"></p><p>最后执行<code>sudo ldconfig</code></p><p>再回到原来目录重新编译运行就成功了</p><p><img src="/images/1722492227287.png" alt="1722492227287"></p>]]></content>
+        <content type="html"><![CDATA[<p>解决spawn-fcgi:child exited with: 127报错</p><p>spawn-fcgi:child exited with: 127<br>原因：没有找到动态库</p><p>输入指令：ldd 你要运行的程序名<br>来查看缺少的库，如图我确少的是 libfcgi.so.0<br><img src="/images/1722491883237.png"></p><p>解决方案<br>先执行命令，查找所缺文件位置，比如我的（你实际操作时候一定要记住库名换成自己的，-name后面）</p><p><code>find usr/local/lib/ -name &quot;libfcgi.so&quot;</code></p><p><img src="/images/1722492061360.png"></p><p>得到库文件所在路径<code>/usr/local/lib</code></p><p>再执行<code>sudo vi /etc/ld.so.conf</code><br>在文件里添加你得到的库文件路径<code>/usr/local/lib</code>，之后保存退出</p><p><img src="/images/1722492201079.png"></p><p>最后执行<code>sudo ldconfig</code></p><p>再回到原来目录重新编译运行就成功了</p><p><img src="/images/1722492227287.png"></p>]]></content>
       
       
       
