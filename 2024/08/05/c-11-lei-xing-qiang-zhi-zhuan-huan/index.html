@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Linux配置环境变量 | Hexo</title>
+  <title>c++11类型强制转换 | Hexo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Linux配置环境变量 | Hexo">
+  <meta name="description" content="c++11类型强制转换 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Oops～，我崩溃了！找不到你想要的页面 :(">
 <meta property="og:type" content="website">
@@ -420,9 +420,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Linux配置环境变量" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-c-11类型强制转换" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Linux配置环境变量</h1>
+        <h1 class="article-title">c++11类型强制转换</h1>
     
     <div class="article-meta">
         
@@ -432,7 +432,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-07-26 21:03:46'>2024-07-26 20:05</time>
+            Created At : <time class="date" title='Updated At: 2024-08-05 22:31:44'>2024-08-05 21:53</time>
         
     </div>
     <div class="article-meta">
@@ -454,7 +454,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-const-cast"><span class="toc-text">1.const_cast</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#const-cast-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-text">const_cast 基本语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E7%94%A8%E9%80%94"><span class="toc-text">主要用途</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-text">示例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%BB%E9%99%A4%E5%B8%B8%E9%87%8F%E6%80%A7"><span class="toc-text">去除常量性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E4%B8%AD%E5%8E%BB%E9%99%A4%E5%B8%B8%E9%87%8F%E6%80%A7"><span class="toc-text">成员函数中去除常量性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8E%E5%BA%93%E5%87%BD%E6%95%B0%E7%9A%84%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="toc-text">与库函数的兼容性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%B8%B8%E9%87%8F%E6%80%A7"><span class="toc-text">添加常量性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">使用注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-static-cast"><span class="toc-text">2.static_cast</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-1"><span class="toc-text">使用注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-reinterpret-cast"><span class="toc-text">4.reinterpret_cast</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%92%8C%E7%A4%BA%E4%BE%8B"><span class="toc-text">使用场景和示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-2"><span class="toc-text">使用注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="toc-text">总结</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -470,25 +470,268 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>当你在终端中输入 <code>echo $PATH</code> 并按回车，你会看到一系列由冒号分隔的目录路径。<code>$PATH</code> 是一个环境变量，它告诉你的系统在哪里查找可执行命令。每当你在终端输入一个命令，系统就会在 <code>$PATH</code> 变量列出的目录中搜索对应的可执行文件。</p>
-<p><code>$PATH</code> 变量的值通常包括以下目录：</p>
+        <h3 id="1-const-cast"><a href="#1-const-cast" class="headerlink" title="1.const_cast"></a>1.const_cast</h3><p><code>const_cast</code> 是 C++ 中的一个类型转换运算符，用于去除或添加指针或引用的常量性。与其他类型转换运算符不同，<code>const_cast</code> 只能用于修改类型的 <code>const</code> 或 <code>volatile</code> 属性。</p>
+<h3 id="const-cast-基本语法"><a href="#const-cast-基本语法" class="headerlink" title="const_cast 基本语法"></a><code>const_cast</code> 基本语法</h3><pre><code class="cpp">const_cast&lt;new_type&gt;(expression)
+</code></pre>
 <ul>
-<li><code>/usr/local/bin</code>: 用户安装的本地应用程序的可执行文件。</li>
-<li><code>/usr/bin</code>: 系统提供的标准应用程序。</li>
-<li><code>/bin</code>: 基础的系统命令。</li>
-<li><code>/usr/sbin</code>: 系统管理员使用的系统命令。</li>
-<li><code>/sbin</code>: 基础的系统管理命令。</li>
-<li><code>~/bin</code>: 用户个人的可执行文件目录。</li>
-<li><code>/usr/local/sbin</code>: 类似于 <code>/usr/local/bin</code>，但用于系统管理命令。</li>
+<li><code>new_type</code>：要转换成的目标类型。</li>
+<li><code>expression</code>：要转换的表达式。</li>
 </ul>
-<p>例如，<code>$PATH</code> 的输出可能类似于：</p>
-<p><strong>&#x2F;usr&#x2F;local&#x2F;bin:&#x2F;usr&#x2F;bin:&#x2F;bin:&#x2F;usr&#x2F;sbin:&#x2F;sbin:~&#x2F;bin</strong></p>
-<p>这意味着当你在终端中输入 <code>ls</code>、<code>cd</code> 或任何其他命令时，系统会在这些目录中查找匹配的可执行文件。</p>
-<p>你可以通过以下步骤将 &#x2F;usr&#x2F;local&#x2F;lib 添加到 PATH 环境变量中：<br>打开终端。<br>使用以下命令将 &#x2F;usr&#x2F;local&#x2F;lib 添加到当前会话的 PATH 环境变量：<br><code>export PATH=$PATH:/usr/local/lib</code><br>这只会在当前终端会话中生效。如果你关闭终端，设置将会丢失。</p>
-<p>如果你希望永久性地将 &#x2F;usr&#x2F;local&#x2F;lib 添加到 PATH 环境变量中，你需要将上述命令添加到你的 shell 配置文件中。具体步骤如下：<br>对于 bash，编辑 ~&#x2F;.bashrc 文件：<br><code>echo &#39;export PATH=$PATH:/usr/local/lib&#39; &gt;&gt; ~/.bashrc</code></p>
-<p>使配置文件生效：</p>
-<p><code>source ~/.bashrc</code></p>
-<p>这样，&#x2F;usr&#x2F;local&#x2F;lib 将被永久添加到 PATH 环境变量中，并在你每次打开新的终端会话时生效。</p>
+<h3 id="主要用途"><a href="#主要用途" class="headerlink" title="主要用途"></a>主要用途</h3><ol>
+<li><strong>去除常量性</strong>：将 <code>const</code> 指针或引用转换为非 <code>const</code>，允许修改对象。</li>
+<li><strong>添加常量性</strong>：将非 <code>const</code> 指针或引用转换为 <code>const</code>。</li>
+</ol>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h4 id="去除常量性"><a href="#去除常量性" class="headerlink" title="去除常量性"></a>去除常量性</h4><pre><code class="cpp">int main() &#123;
+    const int n = 42;
+    // 将 const int* 转换为 int*
+    int* p = const_cast&lt;int*&gt;(&amp;n);
+    
+    // 修改值，尽管这种修改可能导致未定义行为
+    *p = 24;
+    
+    std::cout &lt;&lt; &quot;n: &quot; &lt;&lt; n &lt;&lt; std::endl;  
+
+    return 0;
+&#125;
+</code></pre>
+<h4 id="成员函数中去除常量性"><a href="#成员函数中去除常量性" class="headerlink" title="成员函数中去除常量性"></a>成员函数中去除常量性</h4><p>在某些情况下，成员函数被声明为 <code>const</code>，但是你需要修改成员变量。可以使用 <code>const_cast</code> 去除 <code>const</code> 属性。</p>
+<pre><code class="cpp">class MyClass &#123;
+public:
+    MyClass(int val) : value(val) &#123;&#125;
+
+    void setValue(int val) const &#123;
+        // 去除 this 指针的常量性
+        const_cast&lt;MyClass*&gt;(this)-&gt;value = val;
+    &#125;
+
+    int getValue() const &#123;
+        return value;
+    &#125;
+
+private:
+    int value;
+&#125;;
+
+int main() &#123;
+    const MyClass obj(10);
+
+    obj.setValue(20);  // 修改常量对象的成员变量
+
+    std::cout &lt;&lt; &quot;Value: &quot; &lt;&lt; obj.getValue() &lt;&lt; std::endl;  // 输出 20
+
+    return 0;
+&#125;
+</code></pre>
+<h4 id="与库函数的兼容性"><a href="#与库函数的兼容性" class="headerlink" title="与库函数的兼容性"></a>与库函数的兼容性</h4><p>有时你需要调用一个不接受 <code>const</code> 参数的旧库函数。你可以使用 <code>const_cast</code> 去除 <code>const</code> 属性来与这样的函数兼容。</p>
+<pre><code class="cpp">void legacyFunction(char* str) &#123;
+    std::cout &lt;&lt; &quot;Legacy function: &quot; &lt;&lt; str &lt;&lt; std::endl;
+&#125;
+
+int main() &#123;
+    const char* text = &quot;Hello, world!&quot;;
+    // 将 const char* 转换为 char*
+    legacyFunction(const_cast&lt;char*&gt;(text));
+
+    return 0;
+&#125;
+</code></pre>
+<h3 id="添加常量性"><a href="#添加常量性" class="headerlink" title="添加常量性"></a>添加常量性</h3><p>虽然不常见，但也可以使用 <code>const_cast</code> 添加常量性。</p>
+<pre><code class="cpp">int main() &#123;
+    int n = 42;
+    // 将 int* 转换为 const int*
+    const int* p = const_cast&lt;const int*&gt;(&amp;n);
+
+    // 现在 p 是一个 const int*，不能通过它修改 n
+    // *p = 24;  // 错误，不能修改
+
+    return 0;
+&#125;
+</code></pre>
+<h3 id="使用注意事项"><a href="#使用注意事项" class="headerlink" title="使用注意事项"></a>使用注意事项</h3><ul>
+<li><p><strong>未定义行为</strong>：通过 <code>const_cast</code> 去除常量性并修改对象，如果对象本身是常量的（例如，定义为 <code>const</code>），这种修改会导致未定义行为。</p>
+<pre><code class="cpp">const int n = 42;
+int* p = const_cast&lt;int*&gt;(&amp;n);
+*p = 24;  
+</code></pre>
+</li>
+<li><p><strong>设计意图</strong>：<code>const_cast</code> 应该仅用于你确定不会破坏代码逻辑和设计意图的情况下。常量性通常用于保护数据不被意外修改，因此应谨慎使用 <code>const_cast</code>。</p>
+</li>
+<li><p><strong>兼容性</strong>：<code>const_cast</code> 的主要用途是为了与旧的、不使用 <code>const</code> 修饰的代码或库进行兼容。在新的代码中，尽量避免使用 <code>const_cast</code>，并采用更为安全的设计。</p>
+</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><code>const_cast</code> 是一个功能强大的类型转换工具，用于在 C++ 中处理 <code>const</code> 和 <code>volatile</code> 属性。尽管它在某些场景下非常有用，但由于可能引发未定义行为，因此应谨慎使用，并尽量在设计时避免需要使用它的情况。</p>
+<h3 id="2-static-cast"><a href="#2-static-cast" class="headerlink" title="2.static_cast"></a>2.static_cast</h3><p><code>static_cast</code> 是 C++ 中的一种类型转换运算符，用于在编译时执行类型转换。与 <code>reinterpret_cast</code> 和 <code>const_cast</code> 不同，<code>static_cast</code> 更加安全，因为它只能在特定类型之间进行转换，并且在编译时进行检查。它适用于以下几种常见的类型转换场景：</p>
+<h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><pre><code class="cpp">static_cast&lt;new_type&gt;(expression)
+</code></pre>
+<ul>
+<li><code>new_type</code>：要转换成的目标类型。</li>
+<li><code>expression</code>：要转换的表达式。</li>
+</ul>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
+<li><p><strong>基本数据类型之间的转换</strong>：</p>
+<pre><code class="cpp">int main() &#123;
+    float f = 3.14;
+    int i = static_cast&lt;int&gt;(f);  // 将 float 转换为 int
+    std::cout &lt;&lt; &quot;i: &quot; &lt;&lt; i &lt;&lt; std::endl;  // 输出 i: 3
+    return 0;
+&#125;
+</code></pre>
+</li>
+<li><p><strong>指针类型之间的转换</strong>：</p>
+<pre><code class="cpp">class Base &#123;&#125;;
+class Derived : public Base &#123;&#125;;
+
+int main() &#123;
+    Derived d;
+    Base* b = static_cast&lt;Base*&gt;(&amp;d);  // 将 Derived* 转换为 Base*
+    return 0;
+&#125;
+</code></pre>
+</li>
+<li><p><strong>将空指针转换为其他指针类型</strong>：</p>
+<pre><code class="cpp">int main() &#123;
+    void* ptr = nullptr;
+    int* intPtr = static_cast&lt;int*&gt;(ptr);  // 将 void* 转换为 int*
+    return 0;
+&#125;
+</code></pre>
+</li>
+<li><p><strong>转换枚举类型</strong>：</p>
+<pre><code class="cpp">enum Color &#123; RED, GREEN, BLUE &#125;;
+
+int main() &#123;
+    Color c = RED;
+    int colorInt = static_cast&lt;int&gt;(c);  // 将枚举类型转换为 int
+    std::cout &lt;&lt; &quot;colorInt: &quot; &lt;&lt; colorInt &lt;&lt; std::endl;  // 输出 colorInt: 0
+    return 0;
+&#125;
+</code></pre>
+</li>
+<li><p><strong>基础类和派生类之间的转换</strong>：</p>
+<pre><code class="cpp">class Base &#123;
+public:
+    virtual ~Base() &#123;&#125;
+&#125;;
+
+class Derived : public Base &#123;
+public:
+    void derivedFunction() &#123;&#125;
+&#125;;
+
+int main() &#123;
+    Base* b = new Derived();
+    Derived* d = static_cast&lt;Derived*&gt;(b);  // 将 Base* 转换为 Derived*
+    d-&gt;derivedFunction();  // 调用派生类的方法
+    delete b;
+    return 0;
+&#125;
+</code></pre>
+</li>
+<li><p><strong>有意义的类型转换运算符</strong>：</p>
+<pre><code class="cpp">class Complex &#123;
+public:
+    Complex(double real, double imag) : real(real), imag(imag) &#123;&#125;
+
+    // 定义转换运算符，将 Complex 转换为 double
+    operator double() const &#123;
+        return real;
+    &#125;
+
+private:
+    double real;
+    double imag;
+&#125;;
+
+int main() &#123;
+    Complex c(3.0, 4.0);
+    double realPart = static_cast&lt;double&gt;(c);  // 使用转换运算符将 Complex 转换为 double
+    std::cout &lt;&lt; &quot;realPart: &quot; &lt;&lt; realPart &lt;&lt; std::endl;  // 输出 realPart: 3.0
+    return 0;
+&#125;
+</code></pre>
+</li>
+</ol>
+<h3 id="使用注意事项-1"><a href="#使用注意事项-1" class="headerlink" title="使用注意事项"></a>使用注意事项</h3><ul>
+<li><p><strong>安全性</strong>：<code>static_cast</code> 进行的是编译时检查，因此相对于 <code>reinterpret_cast</code> 更为安全。但它不能用于去除 <code>const</code>、<code>volatile</code> 限定符，也不能进行不相关类型的转换。</p>
+</li>
+<li><p><strong>适用场景</strong>：适用于基本数据类型、指针类型、枚举类型、类层次结构中的上行转换和下行转换（必须确保安全下行）。</p>
+</li>
+<li><p><strong>避免未定义行为</strong>：在进行基类和派生类之间的转换时，必须确保转换是安全的，即被转换对象实际是派生类类型，否则会导致未定义行为。</p>
+</li>
+</ul>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p><code>static_cast</code> 是 C++ 中一种安全且常用的类型转换运算符，适用于多种类型转换场景。它在编译时进行类型检查，相比 <code>reinterpret_cast</code> 和 <code>const_cast</code> 更加安全可靠。在使用时，确保理解转换的类型和语义，以避免潜在的未定义行为。</p>
+<h3 id="4-reinterpret-cast"><a href="#4-reinterpret-cast" class="headerlink" title="4.reinterpret_cast"></a>4.reinterpret_cast</h3><p><code>reinterpret_cast</code> 是 C++ 中的一种类型转换运算符，用于强制转换指针、引用和其他类型之间。与其他类型转换运算符（如 <code>static_cast</code>、<code>dynamic_cast</code> 和 <code>const_cast</code>）不同，<code>reinterpret_cast</code> 可以执行非常规的类型转换，包括不安全的和未定义行为的转换，因此使用时需要特别小心。</p>
+<h3 id="使用场景和示例"><a href="#使用场景和示例" class="headerlink" title="使用场景和示例"></a>使用场景和示例</h3><ol>
+<li><p><strong>指针类型之间的转换</strong>：</p>
+<pre><code class="cpp">int main() &#123;
+    int n = 42;
+    // 将 int* 转换为 char*
+    char* p = reinterpret_cast&lt;char*&gt;(&amp;n);
+
+    // 输出指针 p 所指向的值
+    std::cout &lt;&lt; *p &lt;&lt; std::endl;  // 注意：输出的值依赖于系统的字节序和类型大小
+
+    return 0;
+&#125;
+</code></pre>
+</li>
+<li><p><strong>将整数转换为指针类型</strong>：</p>
+<pre><code class="cpp">int main() &#123;
+    intptr_t addr = 0x12345678;  // 整数地址
+    // 将整数转换为指针
+    int* p = reinterpret_cast&lt;int*&gt;(addr);
+
+    // 打印指针地址
+    std::cout &lt;&lt; p &lt;&lt; std::endl;
+
+    return 0;
+&#125;
+</code></pre>
+</li>
+<li><p><strong>将指针转换为整数类型</strong>：</p>
+<pre><code class="cpp">int main() &#123;
+    int n = 42;
+    int* p = &amp;n;
+    // 将指针转换为整数
+    intptr_t addr = reinterpret_cast&lt;intptr_t&gt;(p);
+
+    // 打印整数地址
+    std::cout &lt;&lt; std::hex &lt;&lt; addr &lt;&lt; std::endl;
+
+    return 0;
+&#125;
+</code></pre>
+</li>
+<li><p><strong>指向对象的指针转换为指向不同类型对象的指针</strong>：</p>
+<pre><code class="cpp">struct A &#123;
+    int x;
+&#125;;
+
+struct B &#123;
+    int y;
+&#125;;
+
+int main() &#123;
+    A a;
+    a.x = 10;
+
+    // 将 A* 转换为 B*
+    B* b = reinterpret_cast&lt;B*&gt;(&amp;a);
+
+    // 注意：访问 b-&gt;y 是不安全的，因为它不是 B 对象
+    std::cout &lt;&lt; b-&gt;y &lt;&lt; std::endl;  // 未定义行为
+
+    return 0;
+&#125;
+</code></pre>
+</li>
+</ol>
+<h3 id="使用注意事项-2"><a href="#使用注意事项-2" class="headerlink" title="使用注意事项"></a>使用注意事项</h3><ul>
+<li><strong>不安全</strong>：<code>reinterpret_cast</code> 可以执行不安全的转换，这可能导致未定义行为。</li>
+<li><strong>可移植性</strong>：<code>reinterpret_cast</code> 的行为可能依赖于具体的编译器和平台，因此使用时要考虑代码的可移植性。</li>
+<li><strong>用途有限</strong>：应该尽量减少使用 <code>reinterpret_cast</code>，除非确实需要进行底层的、特定的类型转换，且确定不会导致未定义行为。</li>
+</ul>
+<h3 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h3><p><code>reinterpret_cast</code> 是一种功能强大但危险的类型转换运算符，主要用于需要底层操作的场景。使用时应确保转换是合理且安全的，以避免潜在的未定义行为和难以调试的问题。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>

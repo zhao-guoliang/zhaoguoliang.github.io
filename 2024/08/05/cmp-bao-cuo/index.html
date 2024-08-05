@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Linux配置环境变量 | Hexo</title>
+  <title>cmp报错 | Hexo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Linux配置环境变量 | Hexo">
+  <meta name="description" content="cmp报错 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Oops～，我崩溃了！找不到你想要的页面 :(">
 <meta property="og:type" content="website">
@@ -420,9 +420,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Linux配置环境变量" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-cmp报错" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Linux配置环境变量</h1>
+        <h1 class="article-title">cmp报错</h1>
     
     <div class="article-meta">
         
@@ -432,7 +432,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-07-26 21:03:46'>2024-07-26 20:05</time>
+            Created At : <time class="date" title='Updated At: 2024-08-05 21:30:27'>2024-08-05 21:30</time>
         
     </div>
     <div class="article-meta">
@@ -470,26 +470,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>当你在终端中输入 <code>echo $PATH</code> 并按回车，你会看到一系列由冒号分隔的目录路径。<code>$PATH</code> 是一个环境变量，它告诉你的系统在哪里查找可执行命令。每当你在终端输入一个命令，系统就会在 <code>$PATH</code> 变量列出的目录中搜索对应的可执行文件。</p>
-<p><code>$PATH</code> 变量的值通常包括以下目录：</p>
-<ul>
-<li><code>/usr/local/bin</code>: 用户安装的本地应用程序的可执行文件。</li>
-<li><code>/usr/bin</code>: 系统提供的标准应用程序。</li>
-<li><code>/bin</code>: 基础的系统命令。</li>
-<li><code>/usr/sbin</code>: 系统管理员使用的系统命令。</li>
-<li><code>/sbin</code>: 基础的系统管理命令。</li>
-<li><code>~/bin</code>: 用户个人的可执行文件目录。</li>
-<li><code>/usr/local/sbin</code>: 类似于 <code>/usr/local/bin</code>，但用于系统管理命令。</li>
-</ul>
-<p>例如，<code>$PATH</code> 的输出可能类似于：</p>
-<p><strong>&#x2F;usr&#x2F;local&#x2F;bin:&#x2F;usr&#x2F;bin:&#x2F;bin:&#x2F;usr&#x2F;sbin:&#x2F;sbin:~&#x2F;bin</strong></p>
-<p>这意味着当你在终端中输入 <code>ls</code>、<code>cd</code> 或任何其他命令时，系统会在这些目录中查找匹配的可执行文件。</p>
-<p>你可以通过以下步骤将 &#x2F;usr&#x2F;local&#x2F;lib 添加到 PATH 环境变量中：<br>打开终端。<br>使用以下命令将 &#x2F;usr&#x2F;local&#x2F;lib 添加到当前会话的 PATH 环境变量：<br><code>export PATH=$PATH:/usr/local/lib</code><br>这只会在当前终端会话中生效。如果你关闭终端，设置将会丢失。</p>
-<p>如果你希望永久性地将 &#x2F;usr&#x2F;local&#x2F;lib 添加到 PATH 环境变量中，你需要将上述命令添加到你的 shell 配置文件中。具体步骤如下：<br>对于 bash，编辑 ~&#x2F;.bashrc 文件：<br><code>echo &#39;export PATH=$PATH:/usr/local/lib&#39; &gt;&gt; ~/.bashrc</code></p>
-<p>使配置文件生效：</p>
-<p><code>source ~/.bashrc</code></p>
-<p>这样，&#x2F;usr&#x2F;local&#x2F;lib 将被永久添加到 PATH 环境变量中，并在你每次打开新的终端会话时生效。</p>
-
+        
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
     </div>

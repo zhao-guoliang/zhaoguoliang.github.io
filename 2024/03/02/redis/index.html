@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Linux配置环境变量 | Hexo</title>
+  <title>redis数据库存取结构体数组数据 | Hexo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Linux配置环境变量 | Hexo">
+  <meta name="description" content="redis数据库存取结构体数组数据 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Oops～，我崩溃了！找不到你想要的页面 :(">
 <meta property="og:type" content="website">
@@ -420,9 +420,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Linux配置环境变量" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Linux配置环境变量</h1>
+        <h1 class="article-title">redis数据库存取结构体数组数据</h1>
     
     <div class="article-meta">
         
@@ -432,7 +432,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-07-26 21:03:46'>2024-07-26 20:05</time>
+            Created At : <time class="date" title='Updated At: 2024-08-02 18:25:04'>2024-03-02 18:23</time>
         
     </div>
     <div class="article-meta">
@@ -470,25 +470,93 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>当你在终端中输入 <code>echo $PATH</code> 并按回车，你会看到一系列由冒号分隔的目录路径。<code>$PATH</code> 是一个环境变量，它告诉你的系统在哪里查找可执行命令。每当你在终端输入一个命令，系统就会在 <code>$PATH</code> 变量列出的目录中搜索对应的可执行文件。</p>
-<p><code>$PATH</code> 变量的值通常包括以下目录：</p>
-<ul>
-<li><code>/usr/local/bin</code>: 用户安装的本地应用程序的可执行文件。</li>
-<li><code>/usr/bin</code>: 系统提供的标准应用程序。</li>
-<li><code>/bin</code>: 基础的系统命令。</li>
-<li><code>/usr/sbin</code>: 系统管理员使用的系统命令。</li>
-<li><code>/sbin</code>: 基础的系统管理命令。</li>
-<li><code>~/bin</code>: 用户个人的可执行文件目录。</li>
-<li><code>/usr/local/sbin</code>: 类似于 <code>/usr/local/bin</code>，但用于系统管理命令。</li>
-</ul>
-<p>例如，<code>$PATH</code> 的输出可能类似于：</p>
-<p><strong>&#x2F;usr&#x2F;local&#x2F;bin:&#x2F;usr&#x2F;bin:&#x2F;bin:&#x2F;usr&#x2F;sbin:&#x2F;sbin:~&#x2F;bin</strong></p>
-<p>这意味着当你在终端中输入 <code>ls</code>、<code>cd</code> 或任何其他命令时，系统会在这些目录中查找匹配的可执行文件。</p>
-<p>你可以通过以下步骤将 &#x2F;usr&#x2F;local&#x2F;lib 添加到 PATH 环境变量中：<br>打开终端。<br>使用以下命令将 &#x2F;usr&#x2F;local&#x2F;lib 添加到当前会话的 PATH 环境变量：<br><code>export PATH=$PATH:/usr/local/lib</code><br>这只会在当前终端会话中生效。如果你关闭终端，设置将会丢失。</p>
-<p>如果你希望永久性地将 &#x2F;usr&#x2F;local&#x2F;lib 添加到 PATH 环境变量中，你需要将上述命令添加到你的 shell 配置文件中。具体步骤如下：<br>对于 bash，编辑 ~&#x2F;.bashrc 文件：<br><code>echo &#39;export PATH=$PATH:/usr/local/lib&#39; &gt;&gt; ~/.bashrc</code></p>
-<p>使配置文件生效：</p>
-<p><code>source ~/.bashrc</code></p>
-<p>这样，&#x2F;usr&#x2F;local&#x2F;lib 将被永久添加到 PATH 环境变量中，并在你每次打开新的终端会话时生效。</p>
+        <p><code>hiredis</code> 是一个 C 语言编写的 Redis 客户端库，用于与 Redis 数据库交互。如果你想要通过 hiredis 存储和检索结构体数组的信息，你需要编写相应的 C 代码来处理这些操作。</p>
+<p>下面我将给出一个简单的示例，展示如何使用 hiredis 在 Redis 中存储和检索结构体数组信息。我们将使用 Redis 的 <code>HMSET</code> 和 <code>HGETALL</code> 命令来处理结构体数组。</p>
+<p>首先，让我们定义一个结构体来模拟你的需求：</p>
+<pre><code class="c">typedef struct User &#123;
+    char *name;
+    int age;
+&#125; User;
+
+// 函数声明
+void storeUserInRedis(struct User *user, long id);
+void getUserFromRedis(long id, struct User *user);
+void printUser(const struct User *user);
+
+int main(void) &#123;
+    // 初始化 hiredis 和连接 Redis
+    redisContext *c = redisConnect(&quot;127.0.0.1&quot;, 6379);
+    if (c == NULL || c-&gt;err) &#123;
+        if (c) &#123;
+            printf(&quot;Error: %s\n&quot;, c-&gt;errstr);
+            redisFree(c);
+        &#125; else &#123;
+            printf(&quot;Connection error: can&#39;t allocate redis context\n&quot;);
+        &#125;
+        return 1;
+    &#125;
+
+    // 创建用户结构体
+    struct User fred = &#123;&quot;Fred&quot;, 25&#125;;
+    struct User alice = &#123;&quot;Alice&quot;, 30&#125;;
+
+    // 生成用户 ID
+    redisReply *reply = (redisReply *)redisCommand(c, &quot;INCR id:users&quot;);
+    long fred_id = reply-&gt;integer;
+    freeReplyObject(reply);
+
+    // 存储用户信息
+    storeUserInRedis(&amp;fred, fred_id);
+
+    // 再次生成用户 ID
+    reply = (redisReply *)redisCommand(c, &quot;INCR id:users&quot;);
+    long alice_id = reply-&gt;integer;
+    freeReplyObject(reply);
+
+    // 存储用户信息
+    storeUserInRedis(&amp;alice, alice_id);
+
+    // 从 Redis 中获取用户信息
+    struct User retrieved_user;
+    getUserFromRedis(fred_id, &amp;retrieved_user);
+    printUser(&amp;retrieved_user);
+
+    // 清理资源
+    redisFree(c);
+    free(retrieved_user.name); // 释放内存
+
+    return 0;
+&#125;
+
+void storeUserInRedis(struct User *user, long id) &#123;
+    redisReply *reply = (redisReply *)redisCommand(NULL, &quot;HMSET user:%ld name %s age %d&quot;, id, user-&gt;name, user-&gt;age);
+    freeReplyObject(reply);
+&#125;
+
+void getUserFromRedis(long id, struct User *user) &#123;
+    redisReply *reply = (redisReply *)redisCommand(NULL, &quot;HGETALL user:%ld&quot;, id);
+    if (reply-&gt;type == REDIS_REPLY_ARRAY &amp;&amp; reply-&gt;elements &gt;= 4) &#123;
+        user-&gt;name = strdup(reply-&gt;element[1]-&gt;str);
+        user-&gt;age = atoi(reply-&gt;element[3]-&gt;str);
+    &#125;
+    freeReplyObject(reply);
+&#125;
+
+void printUser(const struct User *user) &#123;
+    printf(&quot;Name: %s, Age: %d\n&quot;, user-&gt;name, user-&gt;age);
+&#125;
+</code></pre>
+<p>这个示例程序包含了以下几个部分：</p>
+<ol>
+<li><strong>定义结构体</strong>: <code>struct User</code> 包含用户的姓名和年龄。</li>
+<li><strong>连接 Redis</strong>: 使用 <code>redisConnect</code> 连接到 Redis 服务器。</li>
+<li><strong>生成用户 ID</strong>: 使用 <code>INCR</code> 命令递增 <code>id:users</code> 键的值。</li>
+<li><strong>存储用户信息</strong>: 使用 <code>storeUserInRedis</code> 函数，该函数接受用户结构体和 ID 作为参数，并使用 <code>HMSET</code> 命令存储数据。</li>
+<li><strong>获取用户信息</strong>: 使用 <code>getUserFromRedis</code> 函数，该函数接受用户 ID 和指向用户结构体的指针，使用 <code>HGETALL</code> 命令从 Redis 中获取数据并填充结构体。</li>
+<li><strong>打印用户信息</strong>: 使用 <code>printUser</code> 函数来打印用户信息。</li>
+</ol>
+<p>请注意，在实际应用中你需要确保所有动态分配的内存都被正确释放，例如在 <code>getUserFromRedis</code> 函数中通过 <code>strdup</code> 分配的内存。在上面的示例中，我在 <code>main</code> 函数的最后释放了 <code>retrieved_user.name</code> 的内存。</p>
+<p>这个示例假设你已经在 Redis 中设置了 <code>id:users</code> 键，如果没有的话，你需要先初始化它（例如通过 <code>DEL id:users</code> 和 <code>INCR id:users</code>）。此外，你需要安装 hiredis 库并且在编译时链接它。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
