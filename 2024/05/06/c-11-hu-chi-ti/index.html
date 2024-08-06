@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>contact | Hexo</title>
+  <title>c++11互斥体 | Hexo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="contact | Hexo">
+  <meta name="description" content="c++11互斥体 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Oops～，我崩溃了！找不到你想要的页面 :(">
 <meta property="og:type" content="website">
@@ -429,9 +429,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="contact-" class="article article-type-contact" itemscope itemprop="blogPost">
+        <article id="post-c-11互斥体" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">contact</h1>
+        <h1 class="article-title">c++11互斥体</h1>
     
     <div class="article-meta">
         
@@ -441,7 +441,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-07-26 10:56:34'>2018-09-30 17:25</time>
+            Created At : <time class="date" title='Updated At: 2024-08-06 18:00:38'>2024-05-06 17:46</time>
         
     </div>
     <div class="article-meta">
@@ -463,7 +463,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-std-mutex"><span class="toc-text">1. std::mutex</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="toc-text">基本用法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-std-lock-guard"><span class="toc-text">2. std::lock_guard</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-1"><span class="toc-text">基本用法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-std-unique-lock"><span class="toc-text">3. std::unique_lock</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-2"><span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BB%B6%E8%BF%9F%E9%94%81%E5%AE%9A%E5%92%8C%E6%89%8B%E5%8A%A8%E9%94%81%E5%AE%9A-%E8%A7%A3%E9%94%81"><span class="toc-text">延迟锁定和手动锁定&#x2F;解锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%A6%E8%B6%85%E6%97%B6%E7%9A%84%E9%94%81%E5%AE%9A"><span class="toc-text">带超时的锁定</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-std-timed-mutex-%E5%92%8C-std-recursive-mutex"><span class="toc-text">4. std::timed_mutex 和 std::recursive_mutex</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#std-timed-mutex"><span class="toc-text">std::timed_mutex</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#std-recursive-mutex"><span class="toc-text">std::recursive_mutex</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -479,7 +479,187 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>C++11引入了许多新特性来支持多线程编程，其中包括互斥体（mutex）和其他同步机制。互斥体提供了一种机制，用于<strong>确保多个线程在同一时刻不会访问共享资源 ，从而避免数据竞争。</strong>下面是对C++11互斥体的详细介绍。</p>
+<h3 id="1-std-mutex"><a href="#1-std-mutex" class="headerlink" title="1. std::mutex"></a>1. <code>std::mutex</code></h3><p><code>std::mutex</code> 是最基本的互斥体类型，用于保护共享数据，以防止多个线程同时访问。互斥体可以显式地加锁和解锁。</p>
+<h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><pre><code class="cpp">#include &lt;iostream&gt;
+#include &lt;thread&gt;
+#include &lt;mutex&gt;
+using namespace std;
+
+mutex mtx;
+
+void print_thread_id(int id) &#123;
+    mtx.lock();
+    cout &lt;&lt; &quot;Thread &quot; &lt;&lt; id &lt;&lt; std::endl;
+    mtx.unlock();
+&#125;
+
+int main() &#123;
+    thread t1(print_thread_id, 1);
+    thread t2(print_thread_id, 2);
+
+    t1.join();
+    t2.join();
+
+    return 0;
+&#125;
+</code></pre>
+<p>在这个例子中，<code>mtx.lock()</code> 和 <code>mtx.unlock()</code> 确保了只有一个线程能够在同一时刻访问共享资源。</p>
+<h3 id="2-std-lock-guard"><a href="#2-std-lock-guard" class="headerlink" title="2. std::lock_guard"></a>2. <code>std::lock_guard</code></h3><p><code>std::lock_guard</code> 是一种方便的 RAII 机制，用于<strong>自动管理互斥体的锁定和解锁</strong>。<strong>它在构造时锁定互斥体，在析构时解锁互斥体，确保互斥体在作用域结束时总是被解锁。</strong></p>
+<h4 id="基本用法-1"><a href="#基本用法-1" class="headerlink" title="基本用法"></a>基本用法</h4><pre><code class="cpp">#include &lt;iostream&gt;
+#include &lt;thread&gt;
+#include &lt;mutex&gt;
+
+std::mutex mtx;
+
+void print_thread_id(int id) &#123;
+    std::lock_guard&lt;std::mutex&gt; lock(mtx);
+    std::cout &lt;&lt; &quot;Thread &quot; &lt;&lt; id &lt;&lt; std::endl;
+&#125;
+
+int main() &#123;
+    std::thread t1(print_thread_id, 1);
+    std::thread t2(print_thread_id, 2);
+
+    t1.join();
+    t2.join();
+
+    return 0;
+&#125;
+</code></pre>
+<p>在这个例子中，<code>std::lock_guard</code> 确保了 <code>mtx</code> 在函数 <code>print_thread_id</code> 中的整个作用域内都是锁定的。</p>
+<h3 id="3-std-unique-lock"><a href="#3-std-unique-lock" class="headerlink" title="3. std::unique_lock"></a>3. <code>std::unique_lock</code></h3><p><code>std::unique_lock</code> 是一种更灵活的互斥体锁管理器。与 <code>std::lock_guard</code> 相比，<code>std::unique_lock</code> 支持<strong>延迟锁定、锁定超时和锁的解锁&#x2F;重新锁定。</strong></p>
+<h4 id="基本用法-2"><a href="#基本用法-2" class="headerlink" title="基本用法"></a>基本用法</h4><pre><code class="cpp">#include &lt;iostream&gt;
+#include &lt;thread&gt;
+#include &lt;mutex&gt;
+
+std::mutex mtx;
+
+void print_thread_id(int id) &#123;
+    std::unique_lock&lt;std::mutex&gt; lock(mtx);
+    std::cout &lt;&lt; &quot;Thread &quot; &lt;&lt; id &lt;&lt; std::endl;
+&#125;
+
+int main() &#123;
+    std::thread t1(print_thread_id, 1);
+    std::thread t2(print_thread_id, 2);
+
+    t1.join();
+    t2.join();
+
+    return 0;
+&#125;
+</code></pre>
+<h4 id="延迟锁定和手动锁定-解锁"><a href="#延迟锁定和手动锁定-解锁" class="headerlink" title="延迟锁定和手动锁定&#x2F;解锁"></a>延迟锁定和手动锁定&#x2F;解锁</h4><pre><code class="cpp">#include &lt;iostream&gt;
+#include &lt;thread&gt;
+#include &lt;mutex&gt;
+
+std::mutex mtx;
+
+void print_thread_id(int id) &#123;
+    std::unique_lock&lt;std::mutex&gt; lock(mtx, std::defer_lock); // 延迟锁定
+    // 其他操作
+    lock.lock(); // 手动锁定
+    std::cout &lt;&lt; &quot;Thread &quot; &lt;&lt; id &lt;&lt; std::endl;
+    lock.unlock(); // 手动解锁
+    // 其他操作
+&#125;
+
+int main() &#123;
+    std::thread t1(print_thread_id, 1);
+    std::thread t2(print_thread_id, 2);
+
+    t1.join();
+    t2.join();
+
+    return 0;
+&#125;
+</code></pre>
+<h4 id="带超时的锁定"><a href="#带超时的锁定" class="headerlink" title="带超时的锁定"></a>带超时的锁定</h4><pre><code class="cpp">#include &lt;iostream&gt;
+#include &lt;thread&gt;
+#include &lt;mutex&gt;
+#include &lt;chrono&gt;
+
+std::mutex mtx;
+
+void try_lock_for_example() &#123;
+    std::unique_lock&lt;std::mutex&gt; lock(mtx, std::try_to_lock);
+    if (lock.owns_lock()) &#123;
+        std::cout &lt;&lt; &quot;Lock acquired.&quot; &lt;&lt; std::endl;
+    &#125; else &#123;
+        std::cout &lt;&lt; &quot;Lock not acquired.&quot; &lt;&lt; std::endl;
+    &#125;
+&#125;
+
+int main() &#123;
+    std::thread t1(try_lock_for_example);
+    std::thread t2(try_lock_for_example);
+
+    t1.join();
+    t2.join();
+
+    return 0;
+&#125;
+</code></pre>
+<h3 id="4-std-timed-mutex-和-std-recursive-mutex"><a href="#4-std-timed-mutex-和-std-recursive-mutex" class="headerlink" title="4. std::timed_mutex 和 std::recursive_mutex"></a>4. <code>std::timed_mutex</code> 和 <code>std::recursive_mutex</code></h3><h4 id="std-timed-mutex"><a href="#std-timed-mutex" class="headerlink" title="std::timed_mutex"></a><code>std::timed_mutex</code></h4><p><code>std::timed_mutex</code> 支持带超时的锁定操作。</p>
+<pre><code class="cpp">#include &lt;iostream&gt;
+#include &lt;thread&gt;
+#include &lt;mutex&gt;
+#include &lt;chrono&gt;
+
+std::timed_mutex tmtx;
+
+void try_lock_for_example() &#123;
+    if (tmtx.try_lock_for(std::chrono::seconds(1))) &#123;
+        std::cout &lt;&lt; &quot;Lock acquired.&quot; &lt;&lt; std::endl;
+        tmtx.unlock();
+    &#125; else &#123;
+        std::cout &lt;&lt; &quot;Lock not acquired within timeout.&quot; &lt;&lt; std::endl;
+    &#125;
+&#125;
+
+int main() &#123;
+    std::thread t1(try_lock_for_example);
+    std::thread t2(try_lock_for_example);
+
+    t1.join();
+    t2.join();
+
+    return 0;
+&#125;
+</code></pre>
+<h4 id="std-recursive-mutex"><a href="#std-recursive-mutex" class="headerlink" title="std::recursive_mutex"></a><code>std::recursive_mutex</code></h4><p><code>std::recursive_mutex</code> 允许同一个线程多次锁定同一个互斥体，而不会死锁。</p>
+<pre><code class="cpp">#include &lt;iostream&gt;
+#include &lt;thread&gt;
+#include &lt;mutex&gt;
+
+std::recursive_mutex rmtx;
+
+void recursive_function(int count) &#123;
+    if (count &lt;= 0) return;
+    rmtx.lock();
+    std::cout &lt;&lt; &quot;Count: &quot; &lt;&lt; count &lt;&lt; std::endl;
+    recursive_function(--count);
+    rmtx.unlock();
+&#125;
+
+int main() &#123;
+    std::thread t1(recursive_function, 10);
+    t1.join();
+
+    return 0;
+&#125;
+</code></pre>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>C++11 提供了多种类型的互斥体和相应的锁管理工具来确保线程安全：</p>
+<ul>
+<li><code>std::mutex</code>：基本的互斥体类型。</li>
+<li><code>std::lock_guard</code>：RAII 风格的互斥体管理。</li>
+<li><code>std::unique_lock</code>：更灵活的锁管理，支持延迟锁定、超时锁定等。</li>
+<li><code>std::timed_mutex</code>：支持带超时的锁定操作。</li>
+<li><code>std::recursive_mutex</code>：允许同一线程多次锁定。</li>
+</ul>
+<p>这些工具帮助程序员更方便和安全地编写多线程程序，确保对共享资源的访问是互斥的，从而避免数据竞争和潜在的并发问题。</p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
     </div>
