@@ -6,15 +6,13 @@
   <meta name="keywords" content="">
   <meta name="description" content="c++11线程库 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="Oops～，我崩溃了！找不到你想要的页面 :(">
 <meta property="og:type" content="website">
-<meta property="og:title" content="404">
-<meta property="og:url" content="http://example.com/404.html">
+<meta property="og:title" content="categories">
+<meta property="og:url" content="http://example.com/categories/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Oops～，我崩溃了！找不到你想要的页面 :(">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2018-09-30T09:25:30.000Z">
-<meta property="article:modified_time" content="2024-07-26T03:00:24.244Z">
+<meta property="article:modified_time" content="2024-07-26T02:53:46.524Z">
 <meta property="article:author" content="zhaoguoliang">
 <meta name="twitter:card" content="summary">
 
@@ -459,7 +457,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-08-06 18:40:53'>2024-05-06 18:32</time>
+            Created At : <time class="date" title='Updated At: 2024-08-06 18:58:39'>2024-05-06 18:32</time>
         
     </div>
     <div class="article-meta">
@@ -481,7 +479,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-std-thread"><span class="toc-text">1. std::thread</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B"><span class="toc-text">创建线程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-std-this-thread"><span class="toc-text">2. std::this_thread</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD"><span class="toc-text">常用功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-std-future-%E5%92%8C-std-promise"><span class="toc-text">3. std::future 和 std::promise</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#std-promise-%E5%92%8C-std-future"><span class="toc-text">std::promise 和 std::future</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-std-async"><span class="toc-text">4. std::async</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-std-async"><span class="toc-text">使用 std::async</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-std-atomic"><span class="toc-text">5. std::atomic</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-std-atomic"><span class="toc-text">使用 std::atomic</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">原子操作的常用方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-std-thread"><span class="toc-text">1. std::thread</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B"><span class="toc-text">创建线程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-std-this-thread"><span class="toc-text">2. std::this_thread</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD"><span class="toc-text">常用功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B"><span class="toc-text">1. 函数原型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%B7%A5%E4%BD%9C%E6%9C%BA%E5%88%B6"><span class="toc-text">2. 工作机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">3. 使用场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="toc-text">4. 示例代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">5. 注意事项</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-std-future-%E5%92%8C-std-promise"><span class="toc-text">3. std::future 和 std::promise</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#std-promise-%E5%92%8C-std-future"><span class="toc-text">std::promise 和 std::future</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90"><span class="toc-text">代码解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-std-async"><span class="toc-text">4. std::async</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-std-async"><span class="toc-text">使用 std::async</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-std-atomic"><span class="toc-text">5. std::atomic</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-std-atomic"><span class="toc-text">使用 std::atomic</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">原子操作的常用方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="toc-text">总结</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -497,8 +495,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>了解了，只介绍 C++11 中与线程相关的知识点，下面详细介绍 C++11 线程库的关键组件和功能：</p>
-<h2 id="1-std-thread"><a href="#1-std-thread" class="headerlink" title="1. std::thread"></a>1. <code>std::thread</code></h2><p><code>std::thread</code> 类用于创建和管理线程。每个 <code>std::thread</code> 对象表示一个线程，能够执行任何可调用的对象。</p>
+        <h2 id="1-std-thread"><a href="#1-std-thread" class="headerlink" title="1. std::thread"></a>1. <code>std::thread</code></h2><p><code>std::thread</code> 类用于创建和管理线程。每个 <code>std::thread</code> 对象表示一个线程，能够执行任何可调用的对象。</p>
 <h3 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h3><ul>
 <li><p><strong>构造函数</strong>：创建线程并执行指定的函数或可调用对象。</p>
 <pre><code class="cpp">#include &lt;iostream&gt;
@@ -559,6 +556,74 @@ int main() &#123;
 </code></pre>
 </li>
 </ul>
+<ul>
+<li><p><code>std::this_thread::yield()</code> 是 C++11 引入的一种函数，用于在多线程程序中使当前线程自愿让出 CPU 时间，以便其他线程可以执行。这是一个简洁而有效的方法，用于实现线程的协作和调度，尤其是在涉及线程优先级和负载均衡时。</p>
+<h4 id="1-函数原型"><a href="#1-函数原型" class="headerlink" title="1. 函数原型"></a>1. 函数原型</h4><pre><code class="cpp">#include &lt;thread&gt;
+
+void yield();
+</code></pre>
+<ul>
+<li>**<code>std::this_thread::yield()</code>**：使当前线程让出 CPU 时间，将其从运行状态转变为就绪状态，让调度器有机会安排其他线程运行。</li>
+</ul>
+<h4 id="2-工作机制"><a href="#2-工作机制" class="headerlink" title="2. 工作机制"></a>2. 工作机制</h4><ul>
+<li><p><strong>让出 CPU</strong>：调用 <code>std::this_thread::yield()</code> 让当前线程放弃它的剩余时间片，从而允许其他线程（包括优先级较高的线程或同等优先级的线程）获得 CPU 时间。线程在调用 <code>yield</code> 后会回到就绪队列等待重新调度。</p>
+</li>
+<li><p><strong>调度行为</strong>：<code>yield</code> 的具体行为依赖于操作系统和线程调度策略。在某些操作系统中，<code>yield</code> 可能不会立即让当前线程放弃 CPU 时间，而是在当前时间片结束时调度其他线程。在其他系统中，<code>yield</code> 可能会更快地将当前线程移到就绪队列中。</p>
+</li>
+</ul>
+<h4 id="3-使用场景"><a href="#3-使用场景" class="headerlink" title="3. 使用场景"></a>3. 使用场景</h4><ul>
+<li><p><strong>避免忙等待</strong>：在某些多线程应用中，线程可能需要等待某些条件的改变。在这种情况下，使用 <code>std::this_thread::yield()</code> 可以避免忙等待（即不断循环检查条件），从而降低 CPU 使用率并允许其他线程运行。</p>
+</li>
+<li><p><strong>线程协作</strong>：当线程间需要协调工作时，<code>yield</code> 可以让线程主动让出控制权，从而允许其他线程执行某些操作，尤其是在没有严格的优先级要求时。</p>
+</li>
+<li><p><strong>测试和调试</strong>：在调试多线程应用时，<code>yield</code> 可以帮助模拟不同的线程调度情况，观察系统的行为和性能。</p>
+</li>
+</ul>
+<h4 id="4-示例代码"><a href="#4-示例代码" class="headerlink" title="4. 示例代码"></a>4. 示例代码</h4><p>下面的示例展示了如何使用 <code>std::this_thread::yield</code> 来实现简单的线程协作：</p>
+<pre><code class="cpp">#include &lt;iostream&gt;
+#include &lt;thread&gt;
+#include &lt;chrono&gt;
+#include &lt;atomic&gt;
+
+std::atomic&lt;bool&gt; flag&#123;false&#125;;
+
+void thread1() &#123;
+    while (!flag.load()) &#123;
+        std::this_thread::yield(); // 让出 CPU 时间
+    &#125;
+    std::cout &lt;&lt; &quot;Thread 1 finished&quot; &lt;&lt; std::endl;
+&#125;
+
+void thread2() &#123;
+    std::this_thread::sleep_for(std::chrono::seconds(1)); // 模拟工作
+    flag.store(true);
+    std::cout &lt;&lt; &quot;Thread 2 finished&quot; &lt;&lt; std::endl;
+&#125;
+
+int main() &#123;
+    std::thread t1(thread1);
+    std::thread t2(thread2);
+
+    t1.join();
+    t2.join();
+
+    return 0;
+&#125;
+</code></pre>
+<p>在这个示例中：</p>
+<ul>
+<li><code>thread1</code> 线程会在 <code>flag</code> 为 <code>false</code> 时不断调用 <code>std::this_thread::yield()</code>，让出 CPU 时间。</li>
+<li><code>thread2</code> 线程在睡眠一秒后设置 <code>flag</code> 为 <code>true</code>，使 <code>thread1</code> 能够继续执行。</li>
+</ul>
+<h4 id="5-注意事项"><a href="#5-注意事项" class="headerlink" title="5. 注意事项"></a>5. 注意事项</h4><ul>
+<li><p><strong>性能影响</strong>：<code>yield</code> 的使用可能会影响性能，特别是在高负载或高频率调用时。需要在合适的场景下使用，以避免不必要的性能开销。</p>
+</li>
+<li><p><strong>操作系统依赖</strong>：<code>yield</code> 的行为依赖于底层操作系统的线程调度实现，因此不同操作系统可能会有不同的行为表现。</p>
+</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><code>std::this_thread::yield</code> 是一个用于线程协作和调度的有用工具，使当前线程主动让出 CPU 时间，从而允许其他线程执行。它在多线程程序中能够有效地避免忙等待、实现线程协作，并帮助调试和测试。正确使用 <code>yield</code> 可以提高线程间的协调性，但也需要注意它对性能的潜在影响。</p>
+</li>
+</ul>
 <h2 id="3-std-future-和-std-promise"><a href="#3-std-future-和-std-promise" class="headerlink" title="3. std::future 和 std::promise"></a>3. <code>std::future</code> 和 <code>std::promise</code></h2><p><code>std::future</code> 和 <code>std::promise</code> 用于异步操作的结果传递和同步。</p>
 <h3 id="std-promise-和-std-future"><a href="#std-promise-和-std-future" class="headerlink" title="std::promise 和 std::future"></a><code>std::promise</code> 和 <code>std::future</code></h3><ul>
 <li><p>**<code>std::promise</code>**：用于设置一个值或异常，供其他线程通过 <code>std::future</code> 获取。</p>
@@ -582,6 +647,52 @@ int main() &#123;
 &#125;
 </code></pre>
 </li>
+</ul>
+<p>这段代码演示了如何使用 <code>std::promise</code> 和 <code>std::future</code> 在多线程程序中传递结果。以下是对这段代码的详细解释：</p>
+<h3 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h3><ol>
+<li><p><strong>创建 <code>std::promise</code> 对象</strong></p>
+<pre><code class="cpp">std::promise&lt;int&gt; prom;
+</code></pre>
+<p><code>std::promise&lt;int&gt;</code> 用于在线程之间传递结果。它允许一个线程设置一个值，另一个线程获取这个值。</p>
+</li>
+<li><p><strong>获取 <code>std::future</code> 对象</strong></p>
+<pre><code class="cpp">std::future&lt;int&gt; fut = prom.get_future();
+</code></pre>
+<p>从 <code>std::promise</code> 对象中获取 <code>std::future</code> 对象。<code>std::future</code> 用于异步获取 <code>std::promise</code> 设置的值。</p>
+</li>
+<li><p><strong>将 <code>std::promise</code> 移动到线程中</strong></p>
+<pre><code class="cpp">std::thread t(produce, std::move(prom));
+</code></pre>
+<p><code>std::promise</code> 对象通过 <code>std::move</code> 被移动到新线程中执行。移动是必须的，因为 <code>std::promise</code> 对象在线程间传递时不支持拷贝。</p>
+</li>
+<li><p><strong>在新线程中设置值</strong></p>
+<pre><code class="cpp">void produce(std::promise&lt;int&gt;&amp;&amp; prom) &#123;
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    prom.set_value(42);
+&#125;
+</code></pre>
+<p><code>produce</code> 函数模拟一个耗时操作（通过 <code>std::this_thread::sleep_for</code>），然后使用 <code>prom.set_value(42)</code> 设置 <code>std::promise</code> 的值。这个值将被传递到 <code>std::future</code> 中。</p>
+</li>
+<li><p><strong>获取结果并输出</strong></p>
+<pre><code class="cpp">std::cout &lt;&lt; &quot;Result: &quot; &lt;&lt; fut.get() &lt;&lt; std::endl;
+</code></pre>
+<p><code>fut.get()</code> 阻塞当前线程，直到 <code>std::promise</code> 设置的值可用。<code>fut.get()</code> 返回这个值，并输出到控制台。</p>
+</li>
+<li><p><strong>等待线程完成</strong></p>
+<pre><code class="cpp">t.join();
+</code></pre>
+<p><code>t.join()</code> 等待 <code>produce</code> 线程完成执行，确保程序在退出前 <code>produce</code> 线程已经执行完毕。</p>
+</li>
+</ol>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>这段代码演示了如何使用 <code>std::promise</code> 和 <code>std::future</code> 来实现线程间的结果传递：</p>
+<ul>
+<li><code>std::promise</code> 用于设置一个值。</li>
+<li><code>std::future</code> 用于获取这个值。</li>
+<li>通过 <code>std::move</code> 将 <code>std::promise</code> 移动到线程中进行设置。</li>
+<li>使用 <code>fut.get()</code> 获取结果并输出。</li>
+</ul>
+<p>这种方式在处理异步操作和线程间的结果传递时非常有用。</p>
+<ul>
 <li><p>**<code>std::future</code>**：用于获取异步操作的结果。可以通过 <code>get()</code> 方法获取结果，或者使用 <code>wait()</code> 和 <code>wait_for()</code> 等方法等待结果的到来。</p>
 <pre><code class="cpp">#include &lt;iostream&gt;
 #include &lt;thread&gt;
@@ -668,7 +779,7 @@ int main() &#123;
 <li>**<code>fetch_add()</code><strong>、</strong><code>fetch_sub()</code>**：原子性加法和减法。</li>
 <li>**<code>compare_exchange_weak()</code><strong>、</strong><code>compare_exchange_strong()</code>**：原子比较和交换操作。</li>
 </ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>C++11 的线程库引入了多个功能强大的组件来支持多线程编程：</p>
+<h2 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h2><p>C++11 的线程库引入了多个功能强大的组件来支持多线程编程：</p>
 <ul>
 <li>**<code>std::thread</code>**：创建和管理线程。</li>
 <li>**<code>std::this_thread</code>**：提供与当前线程相关的功能，如休眠和获取线程 ID。</li>
