@@ -468,7 +468,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-08-06 19:38:14'>2024-08-06 19:01</time>
+            Created At : <time class="date" title='Updated At: 2024-08-06 19:41:14'>2024-08-06 19:01</time>
         
     </div>
     <div class="article-meta">
@@ -490,7 +490,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#cv-wait-lock-return-ready-%E8%A7%A3%E9%87%8A"><span class="toc-text">cv.wait(lock, [] { return ready; }); 解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-text">工作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-text">示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%A3%80%E6%9F%A5%E6%9D%A1%E4%BB%B6%E5%80%BC"><span class="toc-text">为什么需要检查条件值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E8%AF%B4%E6%98%8E"><span class="toc-text">示例说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E7%A1%AE%E7%9A%84%E5%81%9A%E6%B3%95"><span class="toc-text">正确的做法</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#cv-wait-lock-return-ready-%E8%A7%A3%E9%87%8A"><span class="toc-text">cv.wait(lock, [] { return ready; }); 解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-text">工作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-text">示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%A3%80%E6%9F%A5%E6%9D%A1%E4%BB%B6%E5%80%BC"><span class="toc-text">为什么需要检查条件值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E8%AF%B4%E6%98%8E"><span class="toc-text">示例说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E7%A1%AE%E7%9A%84%E5%81%9A%E6%B3%95"><span class="toc-text">正确的做法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F"><span class="toc-text">为什么使用条件变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E4%BA%A7%E8%80%85-%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%9E%8B%E7%A4%BA%E4%BE%8B"><span class="toc-text">生产者-消费者模型示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90"><span class="toc-text">代码解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-text">总结</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -697,6 +697,95 @@ int main() &#123;
 &#125;
 </code></pre>
 <p>在这个例子中，<code>cv.wait(lock, [] &#123; return ready; &#125;);</code> 检查 <code>ready</code> 条件值，确保只有在条件真正满足时消费者线程才会继续执行。这样可以避免虚假唤醒和其他潜在的同步问题。</p>
+<p>生产者-消费者模型是多线程编程中的经典问题，其主要任务是协调生产者线程和消费者线程，以便在生产和消费之间保持平衡。条件变量（<code>std::condition_variable</code>）是实现这一模型的一个重要工具，因为它提供了一种机制来协调和通知线程何时可以生产或消费数据。</p>
+<h3 id="为什么使用条件变量"><a href="#为什么使用条件变量" class="headerlink" title="为什么使用条件变量"></a>为什么使用条件变量</h3><ol>
+<li><p><strong>线程同步</strong>:</p>
+<ul>
+<li>条件变量可以用来同步生产者和消费者线程。当生产者线程产生新数据时，它可以通知消费者线程数据已准备好。当消费者线程处理完数据后，它可以通知生产者线程可以继续生产。条件变量帮助保证线程之间的正确同步和数据一致性。</li>
+</ul>
+</li>
+<li><p><strong>避免忙等待</strong>:</p>
+<ul>
+<li>在没有条件变量的情况下，消费者线程可能会忙等待（不断检查是否有新数据）以决定是否继续执行。这会浪费 CPU 时间和资源，降低程序效率。使用条件变量可以使线程在没有数据可处理时挂起，直到有数据准备好为止，从而减少 CPU 使用率。</li>
+</ul>
+</li>
+<li><p><strong>处理资源共享</strong>:</p>
+<ul>
+<li>条件变量与互斥量（<code>std::mutex</code>）一起使用，可以确保线程在访问共享资源（如缓冲区）时的安全性。在生产者线程将数据放入缓冲区时，它会锁定互斥量，并在放入数据后通知消费者线程。同样，消费者线程在获取数据前也会锁定互斥量，确保数据的正确性。</li>
+</ul>
+</li>
+<li><p><strong>动态调整</strong>:</p>
+<ul>
+<li>条件变量允许生产者和消费者根据实际的生产和消费速度动态调整。这意味着生产者可以在缓冲区已满时暂停生产，而消费者可以在缓冲区为空时暂停消费。这样可以更灵活地适应不同的生产和消费速率。</li>
+</ul>
+</li>
+</ol>
+<h3 id="生产者-消费者模型示例"><a href="#生产者-消费者模型示例" class="headerlink" title="生产者-消费者模型示例"></a>生产者-消费者模型示例</h3><p>下面是一个使用条件变量的生产者-消费者示例，展示了如何使用条件变量来协调生产者和消费者线程：</p>
+<pre><code class="cpp">#include &lt;iostream&gt;
+#include &lt;queue&gt;
+#include &lt;thread&gt;
+#include &lt;mutex&gt;
+#include &lt;condition_variable&gt;
+
+std::queue&lt;int&gt; data_queue; // 数据队列
+std::mutex mtx; // 互斥量
+std::condition_variable cv; // 条件变量
+const unsigned int max_queue_size = 10; // 最大队列大小
+
+void producer() &#123;
+    int data = 0;
+    while (true) &#123;
+        &#123;
+            std::unique_lock&lt;std::mutex&gt; lock(mtx);
+            cv.wait(lock, [] &#123; return data_queue.size() &lt; max_queue_size; &#125;); // 等待直到有空间
+            data_queue.push(data++); // 生产数据
+            std::cout &lt;&lt; &quot;Produced: &quot; &lt;&lt; data - 1 &lt;&lt; std::endl;
+        &#125;
+        cv.notify_all(); // 通知消费者线程
+        std::this_thread::sleep_for(std::chrono::milliseconds(100)); // 模拟生产延迟
+    &#125;
+&#125;
+
+void consumer() &#123;
+    while (true) &#123;
+        int data;
+        &#123;
+            std::unique_lock&lt;std::mutex&gt; lock(mtx);
+            cv.wait(lock, [] &#123; return !data_queue.empty(); &#125;); // 等待直到有数据
+            data = data_queue.front(); // 消费数据
+            data_queue.pop();
+            std::cout &lt;&lt; &quot;Consumed: &quot; &lt;&lt; data &lt;&lt; std::endl;
+        &#125;
+        cv.notify_all(); // 通知生产者线程
+        std::this_thread::sleep_for(std::chrono::milliseconds(150)); // 模拟消费延迟
+    &#125;
+&#125;
+
+int main() &#123;
+    std::thread prod_thread(producer);
+    std::thread cons_thread(consumer);
+
+    prod_thread.join();
+    cons_thread.join();
+
+    return 0;
+&#125;
+</code></pre>
+<h3 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h3><ol>
+<li><p><strong>生产者线程</strong>:</p>
+<ul>
+<li>在生产者线程中，使用 <code>cv.wait()</code> 等待直到队列有空间可以添加新数据。</li>
+<li>生产数据后，使用 <code>cv.notify_all()</code> 通知所有等待的消费者线程，表示数据已准备好。</li>
+</ul>
+</li>
+<li><p><strong>消费者线程</strong>:</p>
+<ul>
+<li>在消费者线程中，使用 <code>cv.wait()</code> 等待直到队列中有数据可以消费。</li>
+<li>消费数据后，使用 <code>cv.notify_all()</code> 通知所有等待的生产者线程，表示队列中有空位可以添加新数据。</li>
+</ul>
+</li>
+</ol>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>条件变量是生产者-消费者模型中实现线程同步和协调的重要工具。它们通过提供一种机制来等待和通知线程，帮助有效地管理资源共享、避免忙等待，并允许线程根据实际情况动态调整生产和消费行为。通过合理使用条件变量，可以确保生产者和消费者线程之间的有效协作和程序的高效运行。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
