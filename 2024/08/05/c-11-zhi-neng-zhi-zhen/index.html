@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>c++的const | Hexo</title>
+  <title>C++11智能指针 | Hexo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="c++的const | Hexo">
+  <meta name="description" content="C++11智能指针 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Oops～，我崩溃了！找不到你想要的页面 :(">
 <meta property="og:type" content="website">
@@ -447,9 +447,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-c-的const" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-C-11智能指针" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">c++的const</h1>
+        <h1 class="article-title">C++11智能指针</h1>
     
     <div class="article-meta">
         
@@ -459,7 +459,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-08-05 22:42:51'>2024-08-05 21:49</time>
+            Created At : <time class="date" title='Updated At: 2024-08-06 18:50:01'>2024-08-05 16:58</time>
         
     </div>
     <div class="article-meta">
@@ -481,7 +481,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-const-%E5%85%B3%E9%94%AE%E5%AD%97%E5%B0%8F%E7%BB%93"><span class="toc-text">C++ const 关键字小结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-C%E8%AF%AD%E8%A8%80%E7%9A%84-const-%E7%89%B9%E7%82%B9"><span class="toc-text">1. C语言的 const 特点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#fun-c"><span class="toc-text">fun.c</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#main-c"><span class="toc-text">main.c</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-text">总结：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-C-%E4%B8%AD%E7%9A%84-const-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3"><span class="toc-text">2. C++中的 const 深入理解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#fun-cpp"><span class="toc-text">fun.cpp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#main-cpp"><span class="toc-text">main.cpp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%EF%BC%9A"><span class="toc-text">运行结果：</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B1%E4%BA%AB%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="toc-text">共享智能指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-shared-ptr%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">1.shared_ptr的初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">1.1 构造函数初始化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-%E9%80%9A%E8%BF%87%E6%8B%B7%E8%B4%9D%E5%92%8C%E7%A7%BB%E5%8A%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">1.2 通过拷贝和移动构造函数初始化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-3-%E9%80%9A%E8%BF%87make-shared%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">1.3 通过make_shared初始化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-4-%E9%80%9A%E8%BF%87-reset%E6%96%B9%E6%B3%95%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">1.4 通过 reset方法初始化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-5-%E8%8E%B7%E5%8F%96%E5%8E%9F%E5%A7%8B%E6%8C%87%E9%92%88"><span class="toc-text">1.5 获取原始指针</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E5%88%A0%E9%99%A4%E5%99%A8"><span class="toc-text">指定删除器</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -497,87 +497,269 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="C-const-关键字小结"><a href="#C-const-关键字小结" class="headerlink" title="C++ const 关键字小结"></a>C++ <code>const</code> 关键字小结</h1><p><code>const</code> 是 constant 的缩写，本意是不变的、不易改变的意思。在 C++ 中，</p>
-<p><code>const</code> 用来修饰内置类型变量、自定义对象、成员函数、返回值、函数参数。</p>
-<h2 id="1-C语言的-const-特点"><a href="#1-C语言的-const-特点" class="headerlink" title="1. C语言的 const 特点"></a>1. C语言的 <code>const</code> 特点</h2><p>const int a &#x3D; 10; &#x2F;&#x2F; 不要把a看成常量<br>&#x2F;&#x2F; a的本质是变量，只是只读变量</p>
-<p>C语言的 <code>const</code> 修饰全局变量默认是（外部链接的）。</p>
-<h3 id="fun-c"><a href="#fun-c" class="headerlink" title="fun.c"></a>fun.c</h3><pre><code class="cpp">// C语言的const修饰全局变量默认是（外部链接的）
-// 外部链接: 其他源文件可以使用
-const int num = 100; // 只读的全局变量，内存放在文字常量区（内存空间只读）
+        <h3 id="共享智能指针"><a href="#共享智能指针" class="headerlink" title="共享智能指针"></a>共享智能指针</h3><h3 id="1-shared-ptr的初始化"><a href="#1-shared-ptr的初始化" class="headerlink" title="1.shared_ptr的初始化"></a>1.shared_ptr的初始化</h3><p>共享智能指针是指多个智能指针可以同时管理同一块有效的内存，共享智能指针<code>shared_ptr</code> 是一个模板类，如果要进行初始化有三种方式：通过<strong>构造函数</strong>、<strong>make_shared辅助函数</strong>以及<strong>reset方法</strong>。共享智能指针对象初始化完毕之后就指向了要管理的那块堆内存，如果想要查看当前有多少个智能指针同时管理着这块内存可以使用共享智能指针提供的一个成员函数<code>use_count</code>，函数原型如下：</p>
+<pre><code class="c++">// 管理当前对象的 shared_ptr 实例数量，或若无被管理对象则为 0。
+long use_count() const noexcept;
 </code></pre>
-<h3 id="main-c"><a href="#main-c" class="headerlink" title="main.c"></a>main.c</h3><pre><code class="cpp">// 对fun.c中的num进行声明(不要赋值)
-extern const int num;
-void test03() &#123;
-    printf(&quot;num = %d\n&quot;, num);
-    // num = 200; // err num只读
+<h5 id="1-1-构造函数初始化"><a href="#1-1-构造函数初始化" class="headerlink" title="1.1 构造函数初始化"></a>1.1 构造函数初始化</h5><p>shared_ptr<T> 类模板中，提供了多种实用的构造函数, 语法格式如下:<br>shared_ptr<T> 智能指针名字(创建堆内存);</p>
+<pre><code class="c++">#include &lt;iostream&gt;
+#include &lt;memory&gt;
+using namespace std;
 
-    // C语言中const修饰变量名，说明变量名为只读（用户不能通过变量名data进行赋值）
-    const int data = 100; // 局部只读变量，内存在栈区（内存可读可写）
-    // data = 200; // err
+int main()
+&#123;
+    // 使用智能指针管理一块 int 型的堆内存
+    shared_ptr&lt;int&gt; ptr1(new int(520));
+    cout &lt;&lt; &quot;ptr1管理的内存引用计数: &quot; &lt;&lt; ptr1.use_count() &lt;&lt; endl;
+    
+    // 使用智能指针管理一块字符数组对应的堆内存
+    shared_ptr&lt;char&gt; ptr2(new char[12]);
+    cout &lt;&lt; &quot;ptr2管理的内存引用计数: &quot; &lt;&lt; ptr2.use_count() &lt;&lt; endl;
+    
+    // 创建智能指针对象, 不管理任何内存
+    shared_ptr&lt;int&gt; ptr3;
+    cout &lt;&lt; &quot;ptr3管理的内存引用计数: &quot; &lt;&lt; ptr3.use_count() &lt;&lt; endl;
+    
+    // 创建智能指针对象, 初始化为空
+    shared_ptr&lt;int&gt; ptr4(nullptr);
+    cout &lt;&lt; &quot;ptr4管理的内存引用计数: &quot; &lt;&lt; ptr4.use_count() &lt;&lt; endl;
 
-    printf(&quot;data = %d\n&quot;, data);
-    // 但是：如果知道data的地址，可以通过地址间接地修改data所对应空间的内容
-    int *p = (int *)&amp;data;
-    *p = 2000;
-    printf(&quot;data = %d\n&quot;, data); // ok 2000
+    return 0;
+
 &#125;
 </code></pre>
-<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><ol>
-<li><code>const</code> 修饰全局变量 <code>num</code>，变量名只读，内存空间在文字常量区（只读），不能通过 <code>num</code> 的地址修改空间内容。</li>
-<li><code>const</code> 修饰局部变量 <code>data</code>，变量名只读，内存空间在栈区（可读可写），可以通过 <code>data</code> 地址间接地修改空间内容。</li>
-</ol>
-<h2 id="2-C-中的-const-深入理解"><a href="#2-C-中的-const-深入理解" class="headerlink" title="2. C++中的 const 深入理解"></a>2. C++中的 <code>const</code> 深入理解</h2><p><img src="/images/v2-cfd0b188ea87aeb4eed52737f45697b9_r.jpg"></p>
-<h3 id="fun-cpp"><a href="#fun-cpp" class="headerlink" title="fun.cpp"></a>fun.cpp</h3><pre><code class="cpp">// const修饰的全局变量默认是内部链接（只在当前源文件有效，不能直接用于其他源文件）
-// const int num = 100;
-// 如果必须用在其他源文件使用只读的全局变量，必须加 extern 将 num 转换成外部链接
-extern const int num = 100;
+<p>测试代码输出的结果如下:</p>
+<p>ptr1管理的内存引用计数: 1<br>ptr2管理的内存引用计数: 1<br>ptr3管理的内存引用计数: 0<br>ptr4管理的内存引用计数: 0</p>
+<p>如果智能指针被初始化了一块有效内存，那么这块内存的引用计数+1，如果智能指针没有被初始化或者被初始化为<code>nullptr</code>空指针，引用计数不会+1。另外，不要使用一个原始指针初始化多个<code>shared_ptr</code>。</p>
+<pre><code class="c++">int *p = new int;
+shared_ptr&lt;int&gt; p1(p);    //原始指针只能吃初始化一个智能指针
+shared_ptr&lt;int&gt; p2(p);		// error, 编译不会报错, 运行会出错
 </code></pre>
-<h3 id="main-cpp"><a href="#main-cpp" class="headerlink" title="main.cpp"></a>main.cpp</h3><pre><code class="cpp">// 声明
-extern const int num;
-struct Person &#123;
-    int num;
-    char name[32];
+<h5 id="1-2-通过拷贝和移动构造函数初始化"><a href="#1-2-通过拷贝和移动构造函数初始化" class="headerlink" title="1.2 通过拷贝和移动构造函数初始化"></a>1.2 通过拷贝和移动构造函数初始化</h5><p>当一个智能指针被初始化之后，就可以通过这个智能指针初始化其他新对象。在创建新对象的时候，对应的拷贝构造函数或者移动构造函数就被自动调用了。</p>
+<pre><code class="c++">#include &lt;iostream&gt;
+#include &lt;memory&gt;
+using namespace std;
+
+int main()
+&#123;
+    // 使用智能指针管理一块 int 型的堆内存, 内部引用计数为 1
+    shared_ptr&lt;int&gt; ptr1(new int(520));
+    cout &lt;&lt; &quot;ptr1管理的内存引用计数: &quot; &lt;&lt; ptr1.use_count() &lt;&lt; endl;
+    
+    //调用拷贝构造函数
+    shared_ptr&lt;int&gt; ptr2(ptr1);
+    cout &lt;&lt; &quot;ptr2管理的内存引用计数: &quot; &lt;&lt; ptr2.use_count() &lt;&lt; endl;
+    shared_ptr&lt;int&gt; ptr3 = ptr1;
+    cout &lt;&lt; &quot;ptr3管理的内存引用计数: &quot; &lt;&lt; ptr3.use_count() &lt;&lt; endl;
+    
+    //调用移动构造函数
+    shared_ptr&lt;int&gt; ptr4(move(ptr1));
+    cout &lt;&lt; &quot;ptr4管理的内存引用计数: &quot; &lt;&lt; ptr4.use_count() &lt;&lt; endl;
+    std::shared_ptr&lt;int&gt; ptr5 = move(ptr2);
+    cout &lt;&lt; &quot;ptr5管理的内存引用计数: &quot; &lt;&lt; ptr5.use_count() &lt;&lt; endl;
+    
+    return 0;
+&#125;
+</code></pre>
+<p>测试程序输入的结果：<br>ptr1管理的内存引用计数: 1<br>ptr2管理的内存引用计数: 2<br>ptr3管理的内存引用计数: 3<br>ptr4管理的内存引用计数: 3<br>ptr5管理的内存引用计数: 3</p>
+<p>如果使用拷贝的方式初始化共享智能指针对象，这两个对象会同时管理同一块堆内存，堆内存对应的引用计数也会增加；如果使用移动的方式初始智能指针对象，只是转让了内存的所有权，管理内存的对象并不会增加，因此内存的引用计数不会变化。</p>
+<h5 id="1-3-通过make-shared初始化"><a href="#1-3-通过make-shared初始化" class="headerlink" title="1.3 通过make_shared初始化"></a>1.3 通过make_shared初始化</h5><p>通过C++提供的make_shared() 就可以完成内存对象的创建并将其初始化给智能指针，函数原型如下：</p>
+<pre><code class="c++">template&lt; class T, class... Args &gt;
+shared_ptr&lt;T&gt; make_shared( Args&amp;&amp;... args );
+//T：模板参数的数据类型
+//Args&amp;&amp;... args ：要初始化的数据，如果是通过make_shared创建对象，需按照构造函数的参数列表指定
+</code></pre>
+<pre><code class="c++">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;memory&gt;
+using namespace std;
+
+class Test
+&#123;
+public:
+    Test() 
+    &#123;
+        cout &lt;&lt; &quot;construct Test...&quot; &lt;&lt; endl;
+    &#125;
+    Test(int x) 
+    &#123;
+        cout &lt;&lt; &quot;construct Test, x = &quot; &lt;&lt; x &lt;&lt; endl;
+    &#125;
+    Test(string str) 
+    &#123;
+        cout &lt;&lt; &quot;construct Test, str = &quot; &lt;&lt; str &lt;&lt; endl;
+    &#125;
+    ~Test()
+    &#123;
+        cout &lt;&lt; &quot;destruct Test ...&quot; &lt;&lt; endl;
+    &#125;
 &#125;;
 
-void test04() &#123;
-    cout &lt;&lt; &quot;全局num = &quot; &lt;&lt; num &lt;&lt; endl; // err 不识别num
+int main()
+&#123;
+    // 使用智能指针管理一块 int 型的堆内存, 内部引用计数为 1
+    shared_ptr&lt;int&gt; ptr1 = make_shared&lt;int&gt;(520);
+    cout &lt;&lt; &quot;ptr1管理的内存引用计数: &quot; &lt;&lt; ptr1.use_count() &lt;&lt; endl;
 
-    // 1. C++中，对于基础类型，系统不会给data开辟空间，data放到符号表中
-    const int data = 10;
-    // data = 100; // err 只读
-    cout &lt;&lt; &quot;data = &quot; &lt;&lt; data &lt;&lt; endl;
+    shared_ptr&lt;Test&gt; ptr2 = make_shared&lt;Test&gt;();
+    cout &lt;&lt; &quot;ptr2管理的内存引用计数: &quot; &lt;&lt; ptr2.use_count() &lt;&lt; endl;
 
-    // 2. C++中当对data取地址的时候，系统就会给data开辟空间
-    int *p = (int *)&amp;data;
-    *p = 2000;
-    cout &lt;&lt; &quot;*p = &quot; &lt;&lt; *p &lt;&lt; endl; // 空间内容修改成功 2000
-    cout &lt;&lt; &quot;data = &quot; &lt;&lt; data &lt;&lt; endl; // data 还是10，为啥？
+    shared_ptr&lt;Test&gt; ptr3 = make_shared&lt;Test&gt;(520);
+    cout &lt;&lt; &quot;ptr3管理的内存引用计数: &quot; &lt;&lt; ptr3.use_count() &lt;&lt; endl;
 
-    // 2. 当以变量的形式初始化const修饰的变量，系统会为其开辟空间
-    int b = 200;
-    const int a = b; // 系统直接为a开辟空间，而不会把a放入符号表中
-    p = (int *)&amp;a;
-    *p = 3000;
-    cout &lt;&lt; &quot;*p = &quot; &lt;&lt; *p &lt;&lt; endl; // 3000
-    cout &lt;&lt; &quot;a = &quot; &lt;&lt; a &lt;&lt; endl; // 3000
+    shared_ptr&lt;Test&gt; ptr4 = make_shared&lt;Test&gt;(&quot;我是要成为海贼王的男人!!!&quot;);
+    cout &lt;&lt; &quot;ptr4管理的内存引用计数: &quot; &lt;&lt; ptr4.use_count() &lt;&lt; endl;
+    return 0;
 
-    // 3. const修饰自定义数据类型（结构体、对象），系统会分配空间
-    const Person per = &#123;100, &quot;lucy&quot;&#125;;
-    // per.num = 1000; // err
-    cout &lt;&lt; &quot;num = &quot; &lt;&lt; per.num &lt;&lt; &quot;, name = &quot; &lt;&lt; per.name &lt;&lt; endl; // 100 lucy
-    Person *p1 = (Person *)&amp;per;
-    p1-&gt;num = 2000;
-    cout &lt;&lt; &quot;num = &quot; &lt;&lt; per.num &lt;&lt; &quot;, name = &quot; &lt;&lt; per.name &lt;&lt; endl; // 2000 lucy
 &#125;
 </code></pre>
-<h3 id="运行结果："><a href="#运行结果：" class="headerlink" title="运行结果："></a>运行结果：</h3><p><img src="/%5Cimages%5CSnipaste_2024-08-05_22-41-30.png"></p>
-<p>C++的<code>const</code>总结：</p>
-<ol>
-<li><code>const int data = 10;</code> &#x2F;&#x2F; data先放入符号表</li>
-<li>如果对data取地址，系统才会给data开辟空间</li>
-<li><code>const int a = b;</code> &#x2F;&#x2F; b是变量名，系统直接给a开辟空间，而不放入符号表</li>
-<li><code>const</code> 修饰自定义数据，系统为自定义数据开辟空间</li>
-</ol>
+<p>使用std::make_shared()模板函数可以完成内存地址的创建，并将最终得到的内存地址传递给共享智能指针对象管理。如果申请的内存是普通类型，通过函数的（）可完成地址的初始化，如果要创建一个类对象，函数的（）内部需要指定构造对象需要的参数，也就是类构造函数的参数。</p>
+<h5 id="1-4-通过-reset方法初始化"><a href="#1-4-通过-reset方法初始化" class="headerlink" title="1.4 通过 reset方法初始化"></a>1.4 通过 reset方法初始化</h5><p>共享智能指针类提供的std::shared_ptr::reset方法函数原型如下：</p>
+<pre><code class="c++">void reset() noexcept;
+
+template&lt; class Y &gt;
+void reset( Y* ptr );
+
+template&lt; class Y, class Deleter &gt;
+void reset( Y* ptr, Deleter d );
+
+template&lt; class Y, class Deleter, class Alloc &gt;
+void reset( Y* ptr, Deleter d, Alloc alloc );
+</code></pre>
+<p>ptr：指向要取得所有权的对象的指针<br>d：指向要取得所有权的对象的指针<br>aloc：内部存储所用的分配器</p>
+<p>测试代码如下：</p>
+<pre><code class="c++">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;memory&gt;
+using namespace std;
+
+int main()
+&#123;
+    // 使用智能指针管理一块 int 型的堆内存, 内部引用计数为 1
+    shared_ptr&lt;int&gt; ptr1 = make_shared&lt;int&gt;(520);
+    shared_ptr&lt;int&gt; ptr2 = ptr1;
+    shared_ptr&lt;int&gt; ptr3 = ptr1;
+    shared_ptr&lt;int&gt; ptr4 = ptr1;
+    cout &lt;&lt; &quot;ptr1管理的内存引用计数: &quot; &lt;&lt; ptr1.use_count() &lt;&lt; endl;
+    cout &lt;&lt; &quot;ptr2管理的内存引用计数: &quot; &lt;&lt; ptr2.use_count() &lt;&lt; endl;
+    cout &lt;&lt; &quot;ptr3管理的内存引用计数: &quot; &lt;&lt; ptr3.use_count() &lt;&lt; endl;
+    cout &lt;&lt; &quot;ptr4管理的内存引用计数: &quot; &lt;&lt; ptr4.use_count() &lt;&lt; endl;
+
+    ptr4.reset();
+    cout &lt;&lt; &quot;ptr1管理的内存引用计数: &quot; &lt;&lt; ptr1.use_count() &lt;&lt; endl;
+    cout &lt;&lt; &quot;ptr2管理的内存引用计数: &quot; &lt;&lt; ptr2.use_count() &lt;&lt; endl;
+    cout &lt;&lt; &quot;ptr3管理的内存引用计数: &quot; &lt;&lt; ptr3.use_count() &lt;&lt; endl;
+    cout &lt;&lt; &quot;ptr4管理的内存引用计数: &quot; &lt;&lt; ptr4.use_count() &lt;&lt; endl;
+    
+    shared_ptr&lt;int&gt; ptr5;
+    ptr5.reset(new int(250));
+    cout &lt;&lt; &quot;ptr5管理的内存引用计数: &quot; &lt;&lt; ptr5.use_count() &lt;&lt; endl;
+    
+    return 0;
+
+&#125;
+</code></pre>
+<p>测试代码输入的结果:</p>
+<p>ptr1管理的内存引用计数: 4<br>ptr2管理的内存引用计数: 4<br>ptr3管理的内存引用计数: 4<br>ptr4管理的内存引用计数: 4</p>
+<p>ptr1管理的内存引用计数: 3<br>ptr2管理的内存引用计数: 3<br>ptr3管理的内存引用计数: 3<br>ptr4管理的内存引用计数: 0</p>
+<p>ptr5管理的内存引用计数: 1</p>
+<p><strong>对于一个未初始化的共享智能指针，可以通过reset方法来初始化，当智能指针中有值的时候，调用reset会使引用计数减1。</strong></p>
+<h5 id="1-5-获取原始指针"><a href="#1-5-获取原始指针" class="headerlink" title="1.5 获取原始指针"></a>1.5 获取原始指针</h5><p>通过智能指针可以管理一个普通变量或者对象的地址，此时原始地址就不可见了。当我们想要修改变量或者对象中的值的时候，就需要从智能指针对象中先取出数据的原始内存的地址再操作，解决方案是调用共享智能指针类提供的get()方法，其函数原型如下：</p>
+<p><code>T* get() const noexcept;</code></p>
+<p>测试代码如下:</p>
+<pre><code class="c++">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;memory&gt;
+using namespace std;
+
+int main()
+&#123;
+    int len = 128;
+    shared_ptr&lt;char&gt; ptr(new char[len]);
+    
+    // 得到指针的原始地址
+    char* add = ptr.get();
+    memset(add, 0, len);
+    strcpy(add, &quot;我是要成为海贼王的男人!!!&quot;);
+    cout &lt;&lt; &quot;string: &quot; &lt;&lt; add &lt;&lt; endl;
+    
+
+    shared_ptr&lt;int&gt; p(new int);
+    *p = 100;
+    cout &lt;&lt; *p.get() &lt;&lt; &quot;  &quot; &lt;&lt; *p &lt;&lt; endl;
+    
+    return 0;
+
+&#125;
+</code></pre>
+<h3 id="指定删除器"><a href="#指定删除器" class="headerlink" title="指定删除器"></a>指定删除器</h3><p>当智能指针管理的内存对应的引用计数变为0的时候，这块内存就会被智能指针析构掉了。另外，我们在初始化智能指针的时候也可以自己指定删除动作，这个删除操作对应的函数被称之为删除器，这个删除器函数本质是一个回调函数，我们只需要进行实现，其调用是由智能指针完成的。</p>
+<pre><code class="c++">#include &lt;iostream&gt;
+#include &lt;memory&gt;
+using namespace std;
+
+// 自定义删除器函数，释放int型内存
+void deleteIntPtr(int* p)
+&#123;
+    delete p;
+    cout &lt;&lt; &quot;int 型内存被释放了...&quot;;
+&#125;
+
+int main()
+&#123;
+    shared_ptr&lt;int&gt; ptr(new int(250), deleteIntPtr);
+    return 0;
+&#125;
+
+
+//删除器函数也可以是lambda表达式，因此代码也可以写成下面这样：
+int main()
+&#123;
+    shared_ptr&lt;int&gt; ptr(new int(250), [](int* p) &#123;delete p; &#125;);
+    return 0;
+&#125;
+</code></pre>
+<p>在上面的代码中，lambda表达式的参数就是智能指针管理的内存的地址，有了这个地址之后函数体内部就可以完成删除操作了。</p>
+<p>在C++11中使用<code>shared_ptr</code>管理动态数组时，需要指定删除器，因为<code>shared_ptr</code>的<em>默认删除器不支持数组对象</em>，具体的处理代码如下：</p>
+<pre><code class="c++">int main()
+&#123;
+    shared_ptr&lt;int&gt; ptr(new int[10], [](int* p) &#123;delete[]p; &#125;);
+    return 0;
+&#125;
+
+/*
+在删除数组内存时，除了自己编写删除器，也可以使用C++提供的default_delete&lt;T&gt;()函数作为删除器，这个函数内部的删除功能也是通过调用delete来实现的，要释放什么类型的内存就将模板类型T指定为什么类型即可。具体处理代码如下：
+*/
+int main()
+&#123;
+    shared_ptr&lt;int&gt; ptr(new int[10], default_delete&lt;int[]&gt;());
+    return 0;
+&#125;
+</code></pre>
+<p>另外，我们还可以自己封装一个<code>make_shared_array</code>方法来让<code>shared_ptr</code>支持数组，代码如下:</p>
+<pre><code class="c++">#include &lt;iostream&gt;
+#include &lt;memory&gt;
+using namespace std;
+
+template &lt;typename T&gt;
+shared_ptr&lt;T&gt; make_share_array(size_t size)
+&#123;
+    // 返回匿名对象
+    return shared_ptr&lt;T&gt;(new T[size], default_delete&lt;T[]&gt;());
+&#125;
+
+int main()
+&#123;
+    shared_ptr&lt;int&gt; ptr1 = make_share_array&lt;int&gt;(10);
+    cout &lt;&lt; ptr1.use_count() &lt;&lt; endl;
+    shared_ptr&lt;char&gt; ptr2 = make_share_array&lt;char&gt;(128);
+    cout &lt;&lt; ptr2.use_count() &lt;&lt; endl;
+    return 0;
+&#125;
+</code></pre>
+<p><code>shared_ptr</code>使用注意事项:</p>
+<p>1.不能使用一个原始地址初始化多个共享智能指针。</p>
+<p>2.函数不能返回管理了this的共享智能指针对象。</p>
+<p>3.共享智能指针不能循环引用。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>

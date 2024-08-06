@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>C++11新特性 | Hexo</title>
+  <title>c++11线程库 | Hexo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="C++11新特性 | Hexo">
+  <meta name="description" content="c++11线程库 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Oops～，我崩溃了！找不到你想要的页面 :(">
 <meta property="og:type" content="website">
@@ -243,7 +243,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(10)</small>
+                <small>(12)</small>
             
         </div>
     </li>
@@ -268,7 +268,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="10">
+<input type="hidden" id="yelog_site_posts_number" value="12">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -323,6 +323,15 @@
         
         
         <a  class="All "
+           href="/2024/08/06/c-11-xin-te-xing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="c++11新特性">c++11新特性</span>
+            <span class="post-date" title="2024-08-06 18:50:24">2024/08/06</span>
+        </a>
+        
+        
+        <a  class="All "
            href="/2024/08/05/c-11-lei-xing-qiang-zhi-zhuan-huan/"
            data-tag=""
            data-author="" >
@@ -350,10 +359,10 @@
         
         
         <a  class="All "
-           href="/2024/08/05/c-11-xin-te-xing/"
+           href="/2024/08/05/c-11-zhi-neng-zhi-zhen/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="C++11新特性">C++11新特性</span>
+            <span class="post-title" title="C++11智能指针">C++11智能指针</span>
             <span class="post-date" title="2024-08-05 16:58:34">2024/08/05</span>
         </a>
         
@@ -382,6 +391,15 @@
            data-author="" >
             <span class="post-title" title="Linux配置环境变量">Linux配置环境变量</span>
             <span class="post-date" title="2024-07-26 20:05:24">2024/07/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/05/06/c-11-xian-cheng-ku/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="c++11线程库">c++11线程库</span>
+            <span class="post-date" title="2024-05-06 18:32:10">2024/05/06</span>
         </a>
         
         
@@ -429,9 +447,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-C-11新特性" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-c-11线程库" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">C++11新特性</h1>
+        <h1 class="article-title">c++11线程库</h1>
     
     <div class="article-meta">
         
@@ -441,7 +459,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-08-05 19:13:23'>2024-08-05 16:58</time>
+            Created At : <time class="date" title='Updated At: 2024-08-06 18:40:53'>2024-05-06 18:32</time>
         
     </div>
     <div class="article-meta">
@@ -463,7 +481,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B1%E4%BA%AB%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="toc-text">共享智能指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-shared-ptr%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">1.shared_ptr的初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">1.1 构造函数初始化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-%E9%80%9A%E8%BF%87%E6%8B%B7%E8%B4%9D%E5%92%8C%E7%A7%BB%E5%8A%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">1.2 通过拷贝和移动构造函数初始化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-3-%E9%80%9A%E8%BF%87make-shared%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">1.3 通过make_shared初始化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-4-%E9%80%9A%E8%BF%87-reset%E6%96%B9%E6%B3%95%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">1.4 通过 reset方法初始化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-5-%E8%8E%B7%E5%8F%96%E5%8E%9F%E5%A7%8B%E6%8C%87%E9%92%88"><span class="toc-text">1.5 获取原始指针</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E5%88%A0%E9%99%A4%E5%99%A8"><span class="toc-text">指定删除器</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-std-thread"><span class="toc-text">1. std::thread</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B"><span class="toc-text">创建线程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-std-this-thread"><span class="toc-text">2. std::this_thread</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD"><span class="toc-text">常用功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-std-future-%E5%92%8C-std-promise"><span class="toc-text">3. std::future 和 std::promise</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#std-promise-%E5%92%8C-std-future"><span class="toc-text">std::promise 和 std::future</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-std-async"><span class="toc-text">4. std::async</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-std-async"><span class="toc-text">使用 std::async</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-std-atomic"><span class="toc-text">5. std::atomic</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-std-atomic"><span class="toc-text">使用 std::atomic</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">原子操作的常用方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -479,269 +497,186 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="共享智能指针"><a href="#共享智能指针" class="headerlink" title="共享智能指针"></a>共享智能指针</h3><h3 id="1-shared-ptr的初始化"><a href="#1-shared-ptr的初始化" class="headerlink" title="1.shared_ptr的初始化"></a>1.shared_ptr的初始化</h3><p>共享智能指针是指多个智能指针可以同时管理同一块有效的内存，共享智能指针<code>shared_ptr</code> 是一个模板类，如果要进行初始化有三种方式：通过<strong>构造函数</strong>、<strong>make_shared辅助函数</strong>以及<strong>reset方法</strong>。共享智能指针对象初始化完毕之后就指向了要管理的那块堆内存，如果想要查看当前有多少个智能指针同时管理着这块内存可以使用共享智能指针提供的一个成员函数<code>use_count</code>，函数原型如下：</p>
-<pre><code class="c++">// 管理当前对象的 shared_ptr 实例数量，或若无被管理对象则为 0。
-long use_count() const noexcept;
-</code></pre>
-<h5 id="1-1-构造函数初始化"><a href="#1-1-构造函数初始化" class="headerlink" title="1.1 构造函数初始化"></a>1.1 构造函数初始化</h5><p>shared_ptr<T> 类模板中，提供了多种实用的构造函数, 语法格式如下:<br>shared_ptr<T> 智能指针名字(创建堆内存);</p>
-<pre><code class="c++">#include &lt;iostream&gt;
-#include &lt;memory&gt;
-using namespace std;
+        <p>了解了，只介绍 C++11 中与线程相关的知识点，下面详细介绍 C++11 线程库的关键组件和功能：</p>
+<h2 id="1-std-thread"><a href="#1-std-thread" class="headerlink" title="1. std::thread"></a>1. <code>std::thread</code></h2><p><code>std::thread</code> 类用于创建和管理线程。每个 <code>std::thread</code> 对象表示一个线程，能够执行任何可调用的对象。</p>
+<h3 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h3><ul>
+<li><p><strong>构造函数</strong>：创建线程并执行指定的函数或可调用对象。</p>
+<pre><code class="cpp">#include &lt;iostream&gt;
+#include &lt;thread&gt;
 
-int main()
-&#123;
-    // 使用智能指针管理一块 int 型的堆内存
-    shared_ptr&lt;int&gt; ptr1(new int(520));
-    cout &lt;&lt; &quot;ptr1管理的内存引用计数: &quot; &lt;&lt; ptr1.use_count() &lt;&lt; endl;
-    
-    // 使用智能指针管理一块字符数组对应的堆内存
-    shared_ptr&lt;char&gt; ptr2(new char[12]);
-    cout &lt;&lt; &quot;ptr2管理的内存引用计数: &quot; &lt;&lt; ptr2.use_count() &lt;&lt; endl;
-    
-    // 创建智能指针对象, 不管理任何内存
-    shared_ptr&lt;int&gt; ptr3;
-    cout &lt;&lt; &quot;ptr3管理的内存引用计数: &quot; &lt;&lt; ptr3.use_count() &lt;&lt; endl;
-    
-    // 创建智能指针对象, 初始化为空
-    shared_ptr&lt;int&gt; ptr4(nullptr);
-    cout &lt;&lt; &quot;ptr4管理的内存引用计数: &quot; &lt;&lt; ptr4.use_count() &lt;&lt; endl;
-
-    return 0;
-
+void print_message(const std::string&amp; message) &#123;
+    std::cout &lt;&lt; message &lt;&lt; std::endl;
 &#125;
-</code></pre>
-<p>测试代码输出的结果如下:</p>
-<p>ptr1管理的内存引用计数: 1<br>ptr2管理的内存引用计数: 1<br>ptr3管理的内存引用计数: 0<br>ptr4管理的内存引用计数: 0</p>
-<p>如果智能指针被初始化了一块有效内存，那么这块内存的引用计数+1，如果智能指针没有被初始化或者被初始化为<code>nullptr</code>空指针，引用计数不会+1。另外，不要使用一个原始指针初始化多个<code>shared_ptr</code>。</p>
-<pre><code class="c++">int *p = new int;
-shared_ptr&lt;int&gt; p1(p);    //原始指针只能吃初始化一个智能指针
-shared_ptr&lt;int&gt; p2(p);		// error, 编译不会报错, 运行会出错
-</code></pre>
-<h5 id="1-2-通过拷贝和移动构造函数初始化"><a href="#1-2-通过拷贝和移动构造函数初始化" class="headerlink" title="1.2 通过拷贝和移动构造函数初始化"></a>1.2 通过拷贝和移动构造函数初始化</h5><p>当一个智能指针被初始化之后，就可以通过这个智能指针初始化其他新对象。在创建新对象的时候，对应的拷贝构造函数或者移动构造函数就被自动调用了。</p>
-<pre><code class="c++">#include &lt;iostream&gt;
-#include &lt;memory&gt;
-using namespace std;
 
-int main()
-&#123;
-    // 使用智能指针管理一块 int 型的堆内存, 内部引用计数为 1
-    shared_ptr&lt;int&gt; ptr1(new int(520));
-    cout &lt;&lt; &quot;ptr1管理的内存引用计数: &quot; &lt;&lt; ptr1.use_count() &lt;&lt; endl;
-    
-    //调用拷贝构造函数
-    shared_ptr&lt;int&gt; ptr2(ptr1);
-    cout &lt;&lt; &quot;ptr2管理的内存引用计数: &quot; &lt;&lt; ptr2.use_count() &lt;&lt; endl;
-    shared_ptr&lt;int&gt; ptr3 = ptr1;
-    cout &lt;&lt; &quot;ptr3管理的内存引用计数: &quot; &lt;&lt; ptr3.use_count() &lt;&lt; endl;
-    
-    //调用移动构造函数
-    shared_ptr&lt;int&gt; ptr4(move(ptr1));
-    cout &lt;&lt; &quot;ptr4管理的内存引用计数: &quot; &lt;&lt; ptr4.use_count() &lt;&lt; endl;
-    std::shared_ptr&lt;int&gt; ptr5 = move(ptr2);
-    cout &lt;&lt; &quot;ptr5管理的内存引用计数: &quot; &lt;&lt; ptr5.use_count() &lt;&lt; endl;
-    
+int main() &#123;
+    std::thread t(print_message, &quot;Hello from thread!&quot;); // 创建线程并传递参数
+    t.join(); // 等待线程完成
     return 0;
 &#125;
 </code></pre>
-<p>测试程序输入的结果：<br>ptr1管理的内存引用计数: 1<br>ptr2管理的内存引用计数: 2<br>ptr3管理的内存引用计数: 3<br>ptr4管理的内存引用计数: 3<br>ptr5管理的内存引用计数: 3</p>
-<p>如果使用拷贝的方式初始化共享智能指针对象，这两个对象会同时管理同一块堆内存，堆内存对应的引用计数也会增加；如果使用移动的方式初始智能指针对象，只是转让了内存的所有权，管理内存的对象并不会增加，因此内存的引用计数不会变化。</p>
-<h5 id="1-3-通过make-shared初始化"><a href="#1-3-通过make-shared初始化" class="headerlink" title="1.3 通过make_shared初始化"></a>1.3 通过make_shared初始化</h5><p>通过C++提供的make_shared() 就可以完成内存对象的创建并将其初始化给智能指针，函数原型如下：</p>
-<pre><code class="c++">template&lt; class T, class... Args &gt;
-shared_ptr&lt;T&gt; make_shared( Args&amp;&amp;... args );
-//T：模板参数的数据类型
-//Args&amp;&amp;... args ：要初始化的数据，如果是通过make_shared创建对象，需按照构造函数的参数列表指定
+</li>
+<li><p>**<code>join()</code> 和 <code>detach()</code>**：</p>
+<ul>
+<li>**<code>join()</code>**：等待线程执行完成。主线程会阻塞，直到 <code>join()</code> 的线程完成。</li>
+<li>**<code>detach()</code>**：将线程分离，让它在后台继续运行，不会阻塞主线程。如果线程对象超出作用域，分离线程的资源会被自动释放，但主线程不会等待它完成。</li>
+</ul>
+<pre><code class="cpp">std::thread t(print_message, &quot;Hello from detached thread!&quot;);
+t.detach(); // 让线程在后台运行
 </code></pre>
-<pre><code class="c++">#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;memory&gt;
-using namespace std;
+</li>
+</ul>
+<h2 id="2-std-this-thread"><a href="#2-std-this-thread" class="headerlink" title="2. std::this_thread"></a>2. <code>std::this_thread</code></h2><p><code>std::this_thread</code> 提供了与当前线程相关的功能。</p>
+<h3 id="常用功能"><a href="#常用功能" class="headerlink" title="常用功能"></a>常用功能</h3><ul>
+<li><p>**<code>std::this_thread::sleep_for()</code>**：让当前线程休眠指定的时间段。</p>
+<pre><code class="cpp">#include &lt;thread&gt;
+#include &lt;chrono&gt;
 
-class Test
-&#123;
-public:
-    Test() 
-    &#123;
-        cout &lt;&lt; &quot;construct Test...&quot; &lt;&lt; endl;
+int main() &#123;
+    std::this_thread::sleep_for(std::chrono::seconds(2)); // 休眠 2 秒
+    return 0;
+&#125;
+</code></pre>
+</li>
+<li><p>**<code>std::this_thread::sleep_until()</code>**：让当前线程休眠直到指定的时间点。</p>
+<pre><code class="cpp">#include &lt;thread&gt;
+#include &lt;chrono&gt;
+
+int main() &#123;
+    auto wake_up_time = std::chrono::steady_clock::now() + std::chrono::seconds(2);
+    std::this_thread::sleep_until(wake_up_time); // 休眠直到指定时间点
+    return 0;
+&#125;
+</code></pre>
+</li>
+<li><p>**<code>std::this_thread::get_id()</code>**：获取当前线程的 ID。</p>
+<pre><code class="cpp">#include &lt;iostream&gt;
+#include &lt;thread&gt;
+
+int main() &#123;
+    std::cout &lt;&lt; &quot;Current thread ID: &quot; &lt;&lt; std::this_thread::get_id() &lt;&lt; std::endl;
+    return 0;
+&#125;
+</code></pre>
+</li>
+</ul>
+<h2 id="3-std-future-和-std-promise"><a href="#3-std-future-和-std-promise" class="headerlink" title="3. std::future 和 std::promise"></a>3. <code>std::future</code> 和 <code>std::promise</code></h2><p><code>std::future</code> 和 <code>std::promise</code> 用于异步操作的结果传递和同步。</p>
+<h3 id="std-promise-和-std-future"><a href="#std-promise-和-std-future" class="headerlink" title="std::promise 和 std::future"></a><code>std::promise</code> 和 <code>std::future</code></h3><ul>
+<li><p>**<code>std::promise</code>**：用于设置一个值或异常，供其他线程通过 <code>std::future</code> 获取。</p>
+<pre><code class="cpp">#include &lt;iostream&gt;
+#include &lt;thread&gt;
+#include &lt;future&gt;
+
+void produce(std::promise&lt;int&gt;&amp;&amp; prom) &#123;
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    prom.set_value(42); // 设置结果值
+&#125;
+
+int main() &#123;
+    std::promise&lt;int&gt; prom;
+    std::future&lt;int&gt; fut = prom.get_future(); // 获取 future 对象
+    std::thread t(produce, std::move(prom)); // 将 promise 移动到线程
+    std::cout &lt;&lt; &quot;Waiting for result...&quot; &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;Result: &quot; &lt;&lt; fut.get() &lt;&lt; std::endl; // 获取结果
+    t.join();
+    return 0;
+&#125;
+</code></pre>
+</li>
+<li><p>**<code>std::future</code>**：用于获取异步操作的结果。可以通过 <code>get()</code> 方法获取结果，或者使用 <code>wait()</code> 和 <code>wait_for()</code> 等方法等待结果的到来。</p>
+<pre><code class="cpp">#include &lt;iostream&gt;
+#include &lt;thread&gt;
+#include &lt;future&gt;
+
+int compute_value() &#123;
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    return 42;
+&#125;
+
+int main() &#123;
+    std::future&lt;int&gt; fut = std::async(std::launch::async, compute_value); // 异步计算
+    std::cout &lt;&lt; &quot;Waiting for result...&quot; &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;Result: &quot; &lt;&lt; fut.get() &lt;&lt; std::endl; // 获取结果
+    return 0;
+&#125;
+</code></pre>
+</li>
+</ul>
+<h2 id="4-std-async"><a href="#4-std-async" class="headerlink" title="4. std::async"></a>4. <code>std::async</code></h2><p><code>std::async</code> 用于启动一个异步任务并返回 <code>std::future</code> 对象，可以用于获取异步操作的结果。</p>
+<h3 id="使用-std-async"><a href="#使用-std-async" class="headerlink" title="使用 std::async"></a>使用 <code>std::async</code></h3><ul>
+<li><p>**<code>std::launch::async</code>**：强制异步执行。</p>
+<pre><code class="cpp">#include &lt;iostream&gt;
+#include &lt;thread&gt;
+#include &lt;future&gt;
+
+int compute_value() &#123;
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    return 42;
+&#125;
+
+int main() &#123;
+    std::future&lt;int&gt; fut = std::async(std::launch::async, compute_value); // 异步计算
+    std::cout &lt;&lt; &quot;Waiting for result...&quot; &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;Result: &quot; &lt;&lt; fut.get() &lt;&lt; std::endl; // 获取结果
+    return 0;
+&#125;
+</code></pre>
+</li>
+<li><p>**<code>std::launch::deferred</code>**：推迟执行，直到 <code>get()</code> 或 <code>wait()</code> 被调用。</p>
+<pre><code class="cpp">#include &lt;iostream&gt;
+#include &lt;thread&gt;
+#include &lt;future&gt;
+
+int compute_value() &#123;
+    std::cout &lt;&lt; &quot;Computing...&quot; &lt;&lt; std::endl;
+    return 42;
+&#125;
+
+int main() &#123;
+    std::future&lt;int&gt; fut = std::async(std::launch::deferred, compute_value); // 推迟执行
+    std::cout &lt;&lt; &quot;Waiting for result...&quot; &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;Result: &quot; &lt;&lt; fut.get() &lt;&lt; std::endl; // 执行并获取结果
+    return 0;
+&#125;
+</code></pre>
+</li>
+</ul>
+<h2 id="5-std-atomic"><a href="#5-std-atomic" class="headerlink" title="5. std::atomic"></a>5. <code>std::atomic</code></h2><p><code>std::atomic</code> 提供原子操作，用于处理共享数据时避免数据竞争。适用于基本数据类型，如 <code>int</code>、<code>bool</code> 等。</p>
+<h3 id="使用-std-atomic"><a href="#使用-std-atomic" class="headerlink" title="使用 std::atomic"></a>使用 <code>std::atomic</code></h3><pre><code class="cpp">#include &lt;iostream&gt;
+#include &lt;thread&gt;
+#include &lt;atomic&gt;
+
+std::atomic&lt;int&gt; counter(0);
+
+void increment() &#123;
+    for (int i = 0; i &lt; 1000; ++i) &#123;
+        ++counter; // 原子操作，避免数据竞争
     &#125;
-    Test(int x) 
-    &#123;
-        cout &lt;&lt; &quot;construct Test, x = &quot; &lt;&lt; x &lt;&lt; endl;
-    &#125;
-    Test(string str) 
-    &#123;
-        cout &lt;&lt; &quot;construct Test, str = &quot; &lt;&lt; str &lt;&lt; endl;
-    &#125;
-    ~Test()
-    &#123;
-        cout &lt;&lt; &quot;destruct Test ...&quot; &lt;&lt; endl;
-    &#125;
-&#125;;
-
-int main()
-&#123;
-    // 使用智能指针管理一块 int 型的堆内存, 内部引用计数为 1
-    shared_ptr&lt;int&gt; ptr1 = make_shared&lt;int&gt;(520);
-    cout &lt;&lt; &quot;ptr1管理的内存引用计数: &quot; &lt;&lt; ptr1.use_count() &lt;&lt; endl;
-
-    shared_ptr&lt;Test&gt; ptr2 = make_shared&lt;Test&gt;();
-    cout &lt;&lt; &quot;ptr2管理的内存引用计数: &quot; &lt;&lt; ptr2.use_count() &lt;&lt; endl;
-
-    shared_ptr&lt;Test&gt; ptr3 = make_shared&lt;Test&gt;(520);
-    cout &lt;&lt; &quot;ptr3管理的内存引用计数: &quot; &lt;&lt; ptr3.use_count() &lt;&lt; endl;
-
-    shared_ptr&lt;Test&gt; ptr4 = make_shared&lt;Test&gt;(&quot;我是要成为海贼王的男人!!!&quot;);
-    cout &lt;&lt; &quot;ptr4管理的内存引用计数: &quot; &lt;&lt; ptr4.use_count() &lt;&lt; endl;
-    return 0;
-
-&#125;
-</code></pre>
-<p>使用std::make_shared()模板函数可以完成内存地址的创建，并将最终得到的内存地址传递给共享智能指针对象管理。如果申请的内存是普通类型，通过函数的（）可完成地址的初始化，如果要创建一个类对象，函数的（）内部需要指定构造对象需要的参数，也就是类构造函数的参数。</p>
-<h5 id="1-4-通过-reset方法初始化"><a href="#1-4-通过-reset方法初始化" class="headerlink" title="1.4 通过 reset方法初始化"></a>1.4 通过 reset方法初始化</h5><p>共享智能指针类提供的std::shared_ptr::reset方法函数原型如下：</p>
-<pre><code class="c++">void reset() noexcept;
-
-template&lt; class Y &gt;
-void reset( Y* ptr );
-
-template&lt; class Y, class Deleter &gt;
-void reset( Y* ptr, Deleter d );
-
-template&lt; class Y, class Deleter, class Alloc &gt;
-void reset( Y* ptr, Deleter d, Alloc alloc );
-</code></pre>
-<p>ptr：指向要取得所有权的对象的指针<br>d：指向要取得所有权的对象的指针<br>aloc：内部存储所用的分配器</p>
-<p>测试代码如下：</p>
-<pre><code class="c++">#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;memory&gt;
-using namespace std;
-
-int main()
-&#123;
-    // 使用智能指针管理一块 int 型的堆内存, 内部引用计数为 1
-    shared_ptr&lt;int&gt; ptr1 = make_shared&lt;int&gt;(520);
-    shared_ptr&lt;int&gt; ptr2 = ptr1;
-    shared_ptr&lt;int&gt; ptr3 = ptr1;
-    shared_ptr&lt;int&gt; ptr4 = ptr1;
-    cout &lt;&lt; &quot;ptr1管理的内存引用计数: &quot; &lt;&lt; ptr1.use_count() &lt;&lt; endl;
-    cout &lt;&lt; &quot;ptr2管理的内存引用计数: &quot; &lt;&lt; ptr2.use_count() &lt;&lt; endl;
-    cout &lt;&lt; &quot;ptr3管理的内存引用计数: &quot; &lt;&lt; ptr3.use_count() &lt;&lt; endl;
-    cout &lt;&lt; &quot;ptr4管理的内存引用计数: &quot; &lt;&lt; ptr4.use_count() &lt;&lt; endl;
-
-    ptr4.reset();
-    cout &lt;&lt; &quot;ptr1管理的内存引用计数: &quot; &lt;&lt; ptr1.use_count() &lt;&lt; endl;
-    cout &lt;&lt; &quot;ptr2管理的内存引用计数: &quot; &lt;&lt; ptr2.use_count() &lt;&lt; endl;
-    cout &lt;&lt; &quot;ptr3管理的内存引用计数: &quot; &lt;&lt; ptr3.use_count() &lt;&lt; endl;
-    cout &lt;&lt; &quot;ptr4管理的内存引用计数: &quot; &lt;&lt; ptr4.use_count() &lt;&lt; endl;
-    
-    shared_ptr&lt;int&gt; ptr5;
-    ptr5.reset(new int(250));
-    cout &lt;&lt; &quot;ptr5管理的内存引用计数: &quot; &lt;&lt; ptr5.use_count() &lt;&lt; endl;
-    
-    return 0;
-
-&#125;
-</code></pre>
-<p>测试代码输入的结果:</p>
-<p>ptr1管理的内存引用计数: 4<br>ptr2管理的内存引用计数: 4<br>ptr3管理的内存引用计数: 4<br>ptr4管理的内存引用计数: 4</p>
-<p>ptr1管理的内存引用计数: 3<br>ptr2管理的内存引用计数: 3<br>ptr3管理的内存引用计数: 3<br>ptr4管理的内存引用计数: 0</p>
-<p>ptr5管理的内存引用计数: 1</p>
-<p><strong>对于一个未初始化的共享智能指针，可以通过reset方法来初始化，当智能指针中有值的时候，调用reset会使引用计数减1。</strong></p>
-<h5 id="1-5-获取原始指针"><a href="#1-5-获取原始指针" class="headerlink" title="1.5 获取原始指针"></a>1.5 获取原始指针</h5><p>通过智能指针可以管理一个普通变量或者对象的地址，此时原始地址就不可见了。当我们想要修改变量或者对象中的值的时候，就需要从智能指针对象中先取出数据的原始内存的地址再操作，解决方案是调用共享智能指针类提供的get()方法，其函数原型如下：</p>
-<p><code>T* get() const noexcept;</code></p>
-<p>测试代码如下:</p>
-<pre><code class="c++">#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;memory&gt;
-using namespace std;
-
-int main()
-&#123;
-    int len = 128;
-    shared_ptr&lt;char&gt; ptr(new char[len]);
-    
-    // 得到指针的原始地址
-    char* add = ptr.get();
-    memset(add, 0, len);
-    strcpy(add, &quot;我是要成为海贼王的男人!!!&quot;);
-    cout &lt;&lt; &quot;string: &quot; &lt;&lt; add &lt;&lt; endl;
-    
-
-    shared_ptr&lt;int&gt; p(new int);
-    *p = 100;
-    cout &lt;&lt; *p.get() &lt;&lt; &quot;  &quot; &lt;&lt; *p &lt;&lt; endl;
-    
-    return 0;
-
-&#125;
-</code></pre>
-<h3 id="指定删除器"><a href="#指定删除器" class="headerlink" title="指定删除器"></a>指定删除器</h3><p>当智能指针管理的内存对应的引用计数变为0的时候，这块内存就会被智能指针析构掉了。另外，我们在初始化智能指针的时候也可以自己指定删除动作，这个删除操作对应的函数被称之为删除器，这个删除器函数本质是一个回调函数，我们只需要进行实现，其调用是由智能指针完成的。</p>
-<pre><code class="c++">#include &lt;iostream&gt;
-#include &lt;memory&gt;
-using namespace std;
-
-// 自定义删除器函数，释放int型内存
-void deleteIntPtr(int* p)
-&#123;
-    delete p;
-    cout &lt;&lt; &quot;int 型内存被释放了...&quot;;
 &#125;
 
-int main()
-&#123;
-    shared_ptr&lt;int&gt; ptr(new int(250), deleteIntPtr);
-    return 0;
-&#125;
-
-
-//删除器函数也可以是lambda表达式，因此代码也可以写成下面这样：
-int main()
-&#123;
-    shared_ptr&lt;int&gt; ptr(new int(250), [](int* p) &#123;delete p; &#125;);
+int main() &#123;
+    std::thread t1(increment);
+    std::thread t2(increment);
+    t1.join();
+    t2.join();
+    std::cout &lt;&lt; &quot;Counter: &quot; &lt;&lt; counter &lt;&lt; std::endl;
     return 0;
 &#125;
 </code></pre>
-<p>在上面的代码中，lambda表达式的参数就是智能指针管理的内存的地址，有了这个地址之后函数体内部就可以完成删除操作了。</p>
-<p>在C++11中使用<code>shared_ptr</code>管理动态数组时，需要指定删除器，因为<code>shared_ptr</code>的<em>默认删除器不支持数组对象</em>，具体的处理代码如下：</p>
-<pre><code class="c++">int main()
-&#123;
-    shared_ptr&lt;int&gt; ptr(new int[10], [](int* p) &#123;delete[]p; &#125;);
-    return 0;
-&#125;
-
-/*
-在删除数组内存时，除了自己编写删除器，也可以使用C++提供的default_delete&lt;T&gt;()函数作为删除器，这个函数内部的删除功能也是通过调用delete来实现的，要释放什么类型的内存就将模板类型T指定为什么类型即可。具体处理代码如下：
-*/
-int main()
-&#123;
-    shared_ptr&lt;int&gt; ptr(new int[10], default_delete&lt;int[]&gt;());
-    return 0;
-&#125;
-</code></pre>
-<p>另外，我们还可以自己封装一个<code>make_shared_array</code>方法来让<code>shared_ptr</code>支持数组，代码如下:</p>
-<pre><code class="c++">#include &lt;iostream&gt;
-#include &lt;memory&gt;
-using namespace std;
-
-template &lt;typename T&gt;
-shared_ptr&lt;T&gt; make_share_array(size_t size)
-&#123;
-    // 返回匿名对象
-    return shared_ptr&lt;T&gt;(new T[size], default_delete&lt;T[]&gt;());
-&#125;
-
-int main()
-&#123;
-    shared_ptr&lt;int&gt; ptr1 = make_share_array&lt;int&gt;(10);
-    cout &lt;&lt; ptr1.use_count() &lt;&lt; endl;
-    shared_ptr&lt;char&gt; ptr2 = make_share_array&lt;char&gt;(128);
-    cout &lt;&lt; ptr2.use_count() &lt;&lt; endl;
-    return 0;
-&#125;
-</code></pre>
-<p><code>shared_ptr</code>使用注意事项:</p>
-<p>1.不能使用一个原始地址初始化多个共享智能指针。</p>
-<p>2.函数不能返回管理了this的共享智能指针对象。</p>
-<p>3.共享智能指针不能循环引用。</p>
+<h3 id="原子操作的常用方法"><a href="#原子操作的常用方法" class="headerlink" title="原子操作的常用方法"></a>原子操作的常用方法</h3><ul>
+<li>**<code>store()</code>**：设置值。</li>
+<li>**<code>load()</code>**：获取值。</li>
+<li>**<code>fetch_add()</code><strong>、</strong><code>fetch_sub()</code>**：原子性加法和减法。</li>
+<li>**<code>compare_exchange_weak()</code><strong>、</strong><code>compare_exchange_strong()</code>**：原子比较和交换操作。</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>C++11 的线程库引入了多个功能强大的组件来支持多线程编程：</p>
+<ul>
+<li>**<code>std::thread</code>**：创建和管理线程。</li>
+<li>**<code>std::this_thread</code>**：提供与当前线程相关的功能，如休眠和获取线程 ID。</li>
+<li>**<code>std::future</code> 和 <code>std::promise</code>**：用于异步操作的结果传递和同步。</li>
+<li>**<code>std::async</code>**：启动异步任务并返回 <code>std::future</code> 对象。</li>
+<li>**<code>std::atomic</code>**：提供原子操作，处理多线程中的基本数据类型。</li>
+</ul>
+<p>这些工具和类使得 C++11 在处理并发编程时更加强大和灵活。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
