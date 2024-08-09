@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>给CentOS7根目录所对应的分区扩容</title>
+      <link href="/2024/08/09/linux-kuo-rong/"/>
+      <url>/2024/08/09/linux-kuo-rong/</url>
+      
+        <content type="html"><![CDATA[<p>给CentOS7根目录所对应的分区扩容</p><ol><li><p>输入命令进入编辑分区模式：<br><code>fdisk /dev/sda</code></p></li><li><p>因为我的根目录对应分区为&#x2F;dev&#x2F;sda3，所以我需要先删再新建&#x2F;dev&#x2F;sda3（在编辑分区模式下执行）:<br>**输入：d 回车 **</p><p><strong>默认3 : 回车</strong><br>PS：此步骤执行完成后，千万不要保存w，否则&#x2F;dev&#x2F;sda3就真的被删除了，那样&#x2F;dev&#x2F;sda3上的数据就被清空了，根目录下所有数据就都没了。<br><strong>输入：n 回车</strong><br><strong>新建分区类型输入：p 回车</strong><br><strong>选择分区默认3：回车</strong><br>起止扇区不输入任何内容，直接回车默认，将硬盘上剩余所有容量分给sda3</p></li><li><p>保存修改然后自动退出编辑分区模式：<br><strong>输入：w 回车</strong></p></li><li><p>重启(非编辑分区模式下执行)：<br><code>reboot</code></p></li><li><p>刷新分区大小(非编辑分区模式下执行)：<br><code>resize2fs /dev/sda3</code><br>PS：因为我的&#x2F;dev&#x2F;sda3分区是ext4文件系统，所以用resize2fs &#x2F;dev&#x2F;sda3，如果是xfs文件系统，那就用xfs_growfs &#x2F;dev&#x2F;sda3。</p></li></ol><p>ext 格式：resize2fs &#x2F;dev&#x2F;sda3<br>xfs 格式：xfs_growfs &#x2F;dev&#x2F;sda3</p><ol start="6"><li>最后查看根目录是否成功扩容(非编辑分区模式下执行)：<br><code>df -h</code></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>google搜索语法</title>
       <link href="/2024/08/08/google-sou-suo-yu-fa/"/>
       <url>/2024/08/08/google-sou-suo-yu-fa/</url>
