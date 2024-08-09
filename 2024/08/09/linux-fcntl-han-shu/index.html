@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>设计模式 | Hexo</title>
+  <title>fcntl函数 | Hexo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="设计模式 | Hexo">
+  <meta name="description" content="fcntl函数 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Oops～，我崩溃了！找不到你想要的页面 :(">
 <meta property="og:type" content="website">
@@ -540,19 +540,27 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-linux-fcntl函数" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">设计模式</h1>
+        <h1 class="article-title">fcntl函数</h1>
     
     <div class="article-meta">
         
         
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Linux">Linux</a>
+            
+        </span>
         
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-07-29 13:23:21'>2024-07-29 10:29</time>
+            Created At : <time class="date" title='Updated At: 2024-08-09 21:44:30'>2024-08-09 21:43</time>
         
     </div>
     <div class="article-meta">
@@ -574,7 +582,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#fcntl-%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B"><span class="toc-text">fcntl 函数原型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-text">参数说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95%E7%A4%BA%E4%BE%8B"><span class="toc-text">常见用法示例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6"><span class="toc-text">1. 复制文件描述符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%8E%B7%E5%8F%96%E5%92%8C%E8%AE%BE%E7%BD%AE%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E6%A0%87%E5%BF%97"><span class="toc-text">2. 获取和设置文件描述符标志</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%8E%B7%E5%8F%96%E5%92%8C%E8%AE%BE%E7%BD%AE%E6%96%87%E4%BB%B6%E7%8A%B6%E6%80%81%E6%A0%87%E5%BF%97"><span class="toc-text">3. 获取和设置文件状态标志</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="toc-text">错误处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -590,73 +598,44 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>工厂设计模式</strong></p>
-<pre><code class="c++">#include &lt;iostream&gt;
-#include &lt;memory&gt;
+        <p><code>fcntl</code> 是一个在 Unix 和 Linux 系统中广泛使用的系统调用，用于操作文件描述符。这个函数提供了一种灵活的方式来控制和管理文件描述符的各种属性和行为。</p>
+<h3 id="fcntl-函数原型"><a href="#fcntl-函数原型" class="headerlink" title="fcntl 函数原型"></a><code>fcntl</code> 函数原型</h3><pre><code class="c">#include &lt;fcntl.h&gt;
 
-using namespace std; // 引入 std 命名空间
-
-// 抽象产品类
-class Product &#123;
-public:
-    virtual void display() = 0;
-    virtual ~Product() &#123;&#125;
-&#125;;
-
-// 具体产品类 A
-class ConcreteProductA : public Product &#123;
-public:
-    void display() override &#123;
-        cout &lt;&lt; &quot;Concrete Product A&quot; &lt;&lt; endl;
-    &#125;
-&#125;;
-
-// 具体产品类 B
-class ConcreteProductB : public Product &#123;
-public:
-    void display() override &#123;
-        cout &lt;&lt; &quot;Concrete Product B&quot; &lt;&lt; endl;
-    &#125;
-&#125;;
-
-// 工厂类
-class Factory &#123;
-public:
-    // 静态方法，根据参数创建具体产品对象
-    static unique_ptr&lt;Product&gt; createProduct(char type) &#123;
-        switch (type) &#123;
-            case &#39;A&#39;:
-                return make_unique&lt;ConcreteProductA&gt;();
-            case &#39;B&#39;:
-                return make_unique&lt;ConcreteProductB&gt;();
-            default:
-                return nullptr;
-        &#125;
-    &#125;
-&#125;;
-
-int main() &#123;
-    // 使用工厂创建具体产品 A
-    unique_ptr&lt;Product&gt; productA = Factory::createProduct(&#39;A&#39;);
-    if (productA) &#123;
-        productA-&gt;display();
-    &#125;
-
-    // 使用工厂创建具体产品 B
-    unique_ptr&lt;Product&gt; productB = Factory::createProduct(&#39;B&#39;);
-    if (productB) &#123;
-        productB-&gt;display();
-    &#125;
-
-    // 使用工厂创建不存在的产品
-    unique_ptr&lt;Product&gt; productC = Factory::createProduct(&#39;C&#39;);
-    if (!productC) &#123;
-        cout &lt;&lt; &quot;Invalid product type requested.&quot; &lt;&lt; endl;
-    &#125;
-
-    return 0;
-&#125;
+int fcntl(int fd, int cmd, ... /* arg */ );
 </code></pre>
+<h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><ol>
+<li><p><strong><code>fd</code></strong>: 文件描述符，是一个正整数，表示一个打开的文件或设备。</p>
+</li>
+<li><p><strong><code>cmd</code></strong>: 操作命令，用于指定要执行的操作类型。常见的命令有以下几种：</p>
+<ul>
+<li><strong><code>F_DUPFD</code></strong>: 复制文件描述符，返回一个新的文件描述符，该文件描述符最小为 <code>arg</code>。</li>
+<li><strong><code>F_GETFD</code></strong>: 获取文件描述符标志（file descriptor flags），返回 <code>FD_CLOEXEC</code> 的状态。</li>
+<li><strong><code>F_SETFD</code></strong>: 设置文件描述符标志，可以用来设置 <code>FD_CLOEXEC</code>。</li>
+<li><strong><code>F_GETFL</code></strong>: 获取文件状态标志（file status flags），例如 <code>O_RDONLY</code>、<code>O_NONBLOCK</code> 等。</li>
+<li><strong><code>F_SETFL</code></strong>: 设置文件状态标志，可以设置文件的访问模式（例如将文件设置为非阻塞模式 <code>O_NONBLOCK</code>）。</li>
+<li><strong><code>F_GETLK</code></strong>: 获取文件锁的状态。</li>
+<li><strong><code>F_SETLK</code></strong>: 设置或清除文件锁，不会阻塞。如果不能获取锁，将返回错误。</li>
+<li><strong><code>F_SETLKW</code></strong>: 与 <code>F_SETLK</code> 类似，但会阻塞直到锁可以被设置。</li>
+<li><strong><code>F_GETOWN</code></strong>: 获取文件的所有者（通常用于异步 I&#x2F;O 操作的通知）。</li>
+<li><strong><code>F_SETOWN</code></strong>: 设置文件的所有者。</li>
+</ul>
+</li>
+<li><p><strong><code>arg</code></strong>: 可选参数，取决于 <code>cmd</code> 的值。有些命令需要传递一个整型值或指向结构的指针作为 <code>arg</code>。</p>
+</li>
+</ol>
+<h3 id="常见用法示例"><a href="#常见用法示例" class="headerlink" title="常见用法示例"></a>常见用法示例</h3><h4 id="1-复制文件描述符"><a href="#1-复制文件描述符" class="headerlink" title="1. 复制文件描述符"></a>1. 复制文件描述符</h4><pre><code class="c">int new_fd = fcntl(fd, F_DUPFD, 0);
+</code></pre>
+<p>复制 <code>fd</code> 并返回一个新的文件描述符 <code>new_fd</code>，两个描述符共享同一个打开的文件&#x2F;设备。</p>
+<h4 id="2-获取和设置文件描述符标志"><a href="#2-获取和设置文件描述符标志" class="headerlink" title="2. 获取和设置文件描述符标志"></a>2. 获取和设置文件描述符标志</h4><pre><code class="c">int flags = fcntl(fd, F_GETFD); // 获取标志
+fcntl(fd, F_SETFD, flags | FD_CLOEXEC); // 设置 FD_CLOEXEC 标志
+</code></pre>
+<p>这段代码在执行 exec 系列函数时关闭文件描述符。</p>
+<h4 id="3-获取和设置文件状态标志"><a href="#3-获取和设置文件状态标志" class="headerlink" title="3. 获取和设置文件状态标志"></a>3. 获取和设置文件状态标志</h4><pre><code class="c">int flags = fcntl(fd, F_GETFL); // 获取当前的文件状态标志
+fcntl(fd, F_SETFL, flags | O_NONBLOCK); // 将文件设置为非阻塞模式
+</code></pre>
+<p>这段代码将文件描述符设置为非阻塞模式。</p>
+<h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><p><code>fcntl</code> 调用成功时返回正数（通常是新的文件描述符或命令的结果），如果失败则返回 <code>-1</code> 并设置 <code>errno</code> 以指示错误类型。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><code>fcntl</code> 是一个非常强大和灵活的系统调用，它可以用来管理文件描述符的各种属性，包括文件锁、非阻塞模式、文件描述符的复制等。它在系统编程中广泛用于控制和管理文件 I&#x2F;O 操作。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
