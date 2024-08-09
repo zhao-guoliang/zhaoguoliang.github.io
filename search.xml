@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>linux递归遍历目录下文件,并判断文件类型</title>
+      <link href="/2024/08/09/linux-di-gui-bian-li-mu-lu-xia-wen-jian/"/>
+      <url>/2024/08/09/linux-di-gui-bian-li-mu-lu-xia-wen-jian/</url>
+      
+        <content type="html"><![CDATA[<pre><code class="cpp">#include &lt;iostream&gt;using namespace std;#include &lt;sys/types.h&gt;#include &lt;sys/stat.h&gt;#include &lt;fcntl.h&gt;#include &lt;unistd.h&gt;#include &lt;string&gt;#include &lt;string.h&gt;#include &lt;stdio.h&gt;#include &lt;cerrno&gt;#include &lt;dirent.h&gt;void printFileType(const char *path)&#123;        struct stat sb;        if (stat(path, &amp;sb) == 0)        &#123;                if (S_ISREG(sb.st_mode))                &#123;                        std::cout &lt;&lt; &quot;Regular file: &quot; &lt;&lt; path &lt;&lt; std::endl;                &#125;                else if (S_ISDIR(sb.st_mode))                &#123;                        std::cout &lt;&lt; &quot;Directory: &quot; &lt;&lt; path &lt;&lt; std::endl;                &#125;                else if (S_ISBLK(sb.st_mode))                &#123;                        std::cout &lt;&lt; &quot;Block device: &quot; &lt;&lt; path &lt;&lt; std::endl;                &#125;                else if (S_ISCHR(sb.st_mode))                &#123;                        std::cout &lt;&lt; &quot;Character device: &quot; &lt;&lt; path &lt;&lt; std::endl;                &#125;                else if (S_ISFIFO(sb.st_mode))                &#123;                        std::cout &lt;&lt; &quot;FIFO/pipe: &quot; &lt;&lt; path &lt;&lt; std::endl;                &#125;                else if (S_ISSOCK(sb.st_mode))                &#123;                        std::cout &lt;&lt; &quot;Socket: &quot; &lt;&lt; path &lt;&lt; std::endl;                &#125;        &#125;        else        &#123;                std::cerr &lt;&lt; &quot;Error: &quot; &lt;&lt; strerror(errno) &lt;&lt; std::endl;        &#125;&#125;void listDirectoryRecursively(const char* dirPath) &#123;    DIR* dir;    struct dirent* entry;    if ((dir = opendir(dirPath)) != NULL) &#123;        while ((entry = readdir(dir)) != NULL) &#123;            if (strcmp(entry-&gt;d_name, &quot;.&quot;) == 0 || strcmp(entry-&gt;d_name, &quot;..&quot;) == 0) &#123;                continue; // Skip current and parent directories to avoid infinite loop            &#125;            string filePath = dirPath;            if (filePath.back() != &#39;/&#39;) &#123;                filePath += &quot;/&quot;;            &#125;            filePath += entry-&gt;d_name;            printFileType(filePath.c_str());            if (entry-&gt;d_type == DT_DIR) &#123;                listDirectoryRecursively(filePath.c_str());            &#125;        &#125;        closedir(dir);    &#125; else &#123;        std::cerr &lt;&lt; &quot;Error opening directory: &quot; &lt;&lt; strerror(errno) &lt;&lt; std::endl;    &#125;&#125;int main()&#123;        listDirectoryRecursively(&quot;/home/zhao/mytest&quot;);            return 0;&#125;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>给CentOS7根目录所对应的分区扩容</title>
       <link href="/2024/08/09/linux-kuo-rong/"/>
       <url>/2024/08/09/linux-kuo-rong/</url>

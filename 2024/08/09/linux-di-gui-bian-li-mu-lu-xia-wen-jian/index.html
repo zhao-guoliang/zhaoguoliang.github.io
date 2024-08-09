@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>跳表 | Hexo</title>
+  <title>linux递归遍历目录下文件,并判断文件类型 | Hexo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="跳表 | Hexo">
+  <meta name="description" content="linux递归遍历目录下文件,并判断文件类型 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Oops～，我崩溃了！找不到你想要的页面 :(">
 <meta property="og:type" content="website">
@@ -531,9 +531,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-跳表" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-linux递归遍历目录下文件" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">跳表</h1>
+        <h1 class="article-title">linux递归遍历目录下文件,并判断文件类型</h1>
     
     <div class="article-meta">
         
@@ -543,7 +543,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="数据结构">数据结构</a>
+            <a  data-rel="Linux">Linux</a>
             
         </span>
         
@@ -551,7 +551,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-08-08 16:52:22'>2024-08-07 10:27</time>
+            Created At : <time class="date" title='Updated At: 2024-08-09 21:26:27'>2024-08-09 21:25</time>
         
     </div>
     <div class="article-meta">
@@ -573,7 +573,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%B3%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="toc-text">跳表的基本结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%B3%E8%A1%A8%E7%9A%84%E7%A4%BA%E6%84%8F%E5%9B%BE"><span class="toc-text">跳表的示意图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%B3%E8%A1%A8%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">跳表的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%B3%E8%A1%A8%E7%9A%84%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-text">跳表的复杂度分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">代码实现</span></a></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -589,111 +589,85 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV16Y411J7sT/?spm_id_from=333.337.search-card.all.click&vd_source=22c6cdd1f2942942ebeae1c234b5b8f2">https://www.bilibili.com/video/BV16Y411J7sT/?spm_id_from=333.337.search-card.all.click&amp;vd_source=22c6cdd1f2942942ebeae1c234b5b8f2</a></p>
-<p>跳表（Skip List）是一种用于有序数据存储的数据结构，允许快速查询、插入和删除操作。跳表在很多方面与平衡树（如 AVL 树或红黑树）相似，但更简单且易于实现。它通过在链表的基础上增加多层索引来实现快速操作。</p>
-<h3 id="跳表的基本结构"><a href="#跳表的基本结构" class="headerlink" title="跳表的基本结构"></a>跳表的基本结构</h3><p>跳表由多层链表组成，底层是一个有序的链表，每一层都是从底层链表中抽取的一些结点组成的链表。每一层链表包含的结点数量逐层减少，顶层链表通常只有一个结点。</p>
-<h3 id="跳表的示意图"><a href="#跳表的示意图" class="headerlink" title="跳表的示意图"></a>跳表的示意图</h3><p>假设我们有一个包含整数的跳表：</p>
-<pre><code>Level 3:       1---------------------12----------------------
-Level 2:       1-------5-------9------12---------------------
-Level 1:       1--3----5--7----9--10--12---------------------
-Level 0:       1--2--3--4--5--6--7--8--9--10--11--12--13--14
-</code></pre>
-<h3 id="跳表的操作"><a href="#跳表的操作" class="headerlink" title="跳表的操作"></a>跳表的操作</h3><ol>
-<li><p><strong>查找（Search）</strong>：</p>
-<ul>
-<li>从顶层开始查找，从左到右移动，直到找到大于或等于目标值的结点。</li>
-<li>如果找到目标值，查找结束；如果没有，向下一层继续查找。</li>
-<li>在每一层，移动的步数较少，因为层级越高，结点越稀疏。</li>
-</ul>
-</li>
-<li><p><strong>插入（Insert）</strong>：</p>
-<ul>
-<li>插入操作首先需要找到插入位置，即找到比新值小且最接近的结点。</li>
-<li>插入结点后，决定新结点的层数（通常使用随机化方法，如抛硬币）。</li>
-<li>将新结点插入到所有相关层的链表中。</li>
-</ul>
-</li>
-<li><p><strong>删除（Delete）</strong>：</p>
-<ul>
-<li>删除操作首先需要找到目标结点在每一层的位置。</li>
-<li>然后从每一层的链表中移除该结点。</li>
-</ul>
-</li>
-</ol>
-<h3 id="跳表的复杂度分析"><a href="#跳表的复杂度分析" class="headerlink" title="跳表的复杂度分析"></a>跳表的复杂度分析</h3><p>跳表的时间复杂度可以近似为 O(log n)，这是因为跳表的高度大约为 O(log n)，每层的搜索和插入操作平均需要 O(1) 的时间。</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><pre><code class="cpp">class Skiplist &#123;
-public:
-    static const int level = 8; // 层数，经验值 8，太大浪费空间，因为每一个节点都要存在每一层的 next，层数越多节点数越多
+        <pre><code class="cpp">#include &lt;iostream&gt;
+using namespace std;
+#include &lt;sys/types.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;string&gt;
+#include &lt;string.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;cerrno&gt;
+#include &lt;dirent.h&gt;
 
-    // 定义跳表节点
-    struct Node &#123;
-        int val; // 节点值
-        vector&lt;Node*&gt; next; // 记录节点在每一层的 next，next[i] 表示当前节点第 i 层的 next
 
-        Node(int _val) : val(_val) &#123; // 构造函数
-            next.resize(level, NULL); // 初始化 next 数组的大小和层数 level 相同，初始值都指向 NULL
+void printFileType(const char *path)
+&#123;
+        struct stat sb;
+        if (stat(path, &amp;sb) == 0)
+        &#123;
+                if (S_ISREG(sb.st_mode))
+                &#123;
+                        std::cout &lt;&lt; &quot;Regular file: &quot; &lt;&lt; path &lt;&lt; std::endl;
+                &#125;
+                else if (S_ISDIR(sb.st_mode))
+                &#123;
+                        std::cout &lt;&lt; &quot;Directory: &quot; &lt;&lt; path &lt;&lt; std::endl;
+                &#125;
+                else if (S_ISBLK(sb.st_mode))
+                &#123;
+                        std::cout &lt;&lt; &quot;Block device: &quot; &lt;&lt; path &lt;&lt; std::endl;
+                &#125;
+                else if (S_ISCHR(sb.st_mode))
+                &#123;
+                        std::cout &lt;&lt; &quot;Character device: &quot; &lt;&lt; path &lt;&lt; std::endl;
+                &#125;
+                else if (S_ISFIFO(sb.st_mode))
+                &#123;
+                        std::cout &lt;&lt; &quot;FIFO/pipe: &quot; &lt;&lt; path &lt;&lt; std::endl;
+                &#125;
+                else if (S_ISSOCK(sb.st_mode))
+                &#123;
+                        std::cout &lt;&lt; &quot;Socket: &quot; &lt;&lt; path &lt;&lt; std::endl;
+                &#125;
         &#125;
-    &#125;*head; // 定义头节点 head
-
-    Skiplist() &#123;
-        head = new Node(-1); // 初始化一个不存在的节点值 -1
-    &#125;
-
-    ~Skiplist() &#123;
-        delete head; // 析构函数删除 head
-    &#125;
-
-    // 辅助函数：找到每一层 i 小于目标值 target 的最大节点 pre[i]，最后 pre 中存的就是每一层小于 target 的最大节点
-    void find(int target, vector&lt;Node*&gt;&amp; pre) &#123;
-        auto p = head; // 从头节点开始遍历每一层
-        for (int i = level - 1; i &gt;= 0; i -- ) &#123; // 从上层往下层找
-            while (p-&gt;next[i] &amp;&amp; p-&gt;next[i]-&gt;val &lt; target) p = p-&gt;next[i]; // 如果当前层 i 的 next 不为空，且它的值小于 target，则 p 往后走指向这一层 p 的 next
-            pre[i] = p; // 退出 while 时说明找到了第 i 层小于 target 的最大节点就是 p
+        else
+        &#123;
+                std::cerr &lt;&lt; &quot;Error: &quot; &lt;&lt; strerror(errno) &lt;&lt; std::endl;
         &#125;
+&#125;
+
+void listDirectoryRecursively(const char* dirPath) &#123;
+    DIR* dir;
+    struct dirent* entry;
+    if ((dir = opendir(dirPath)) != NULL) &#123;
+        while ((entry = readdir(dir)) != NULL) &#123;
+            if (strcmp(entry-&gt;d_name, &quot;.&quot;) == 0 || strcmp(entry-&gt;d_name, &quot;..&quot;) == 0) &#123;
+                continue; // Skip current and parent directories to avoid infinite loop
+            &#125;
+            string filePath = dirPath;
+            if (filePath.back() != &#39;/&#39;) &#123;
+                filePath += &quot;/&quot;;
+            &#125;
+            filePath += entry-&gt;d_name;
+            printFileType(filePath.c_str());
+            if (entry-&gt;d_type == DT_DIR) &#123;
+                listDirectoryRecursively(filePath.c_str());
+            &#125;
+        &#125;
+        closedir(dir);
+    &#125; else &#123;
+        std::cerr &lt;&lt; &quot;Error opening directory: &quot; &lt;&lt; strerror(errno) &lt;&lt; std::endl;
     &#125;
+&#125;
+
+int main()
+&#123;
+        listDirectoryRecursively(&quot;/home/zhao/mytest&quot;);
     
-    // 从跳表中查找 target
-    bool search(int target) &#123;
-        vector&lt;Node*&gt; pre(level);
-        find(target, pre); // 先找到每一层 i 小于目标值 target 的最大节点 pre[i]
-        
-        auto p = pre[0]-&gt;next[0]; // 因为最下层【0】的节点是全的，所以只需要判断 target 是否在第 0 层即可，而 pre[0] 正好就是小于 target 的最大节点，如果 pre[0]-&gt;next[0] 的值不是 target 说明没有这个元素
-        return p &amp;&amp; p-&gt;val == target;
-    &#125;
-    
-    // 向跳表中插入元素 num
-    void add(int num) &#123;
-        vector&lt;Node*&gt; pre(level);
-        find(num, pre); // 先找到每一层 i 小于目标值 target 的最大节点 pre[i]
-
-        auto p = new Node(num); // 创建要插入的新节点
-        for (int i = 0; i &lt; level; i ++ ) &#123; // 遍历每一层，从下往上插入新节点
-            p-&gt;next[i] = pre[i]-&gt;next[i]; // 这两步就是单链表的插入
-            pre[i]-&gt;next[i] = p;
-            if (rand() % 2) break; // 每一层有 50% 的概率不插入新节点
-        &#125;
-    &#125;
-    
-    // 从跳表中删除 num
-    bool erase(int num) &#123;
-        vector&lt;Node*&gt; pre(level);
-        find(num, pre); // 先找到每一层 i 小于目标值 target 的最大节点 pre[i]
-
-        // 先判断 num 是否存在，不存在直接返回 false
-        // 第 0 层存储的是全部节点，所以只需要判断 pre[0]-&gt;next[0]（第 0 层小于 num 的最大节点的在第 0 层的 next） 是不是 num 即可
-        auto p = pre[0]-&gt;next[0];
-        if (!p || p-&gt;val != num) return false;
-
-        // 否则删除每一层的 num，如果 pre[i]-&gt;next[i] == p 说明第 i 层存在 p
-        for (int i = 0; i &lt; level &amp;&amp; pre[i]-&gt;next[i] == p; i ++ ) &#123;
-            pre[i]-&gt;next[i] = p-&gt;next[i]; // 单链表删除
-        &#125;
-
-        delete p; // 删除节点 p，防止内存泄漏
-
-        return true;
-    &#125;
-&#125;;
+        return 0;
+&#125;
 </code></pre>
 
       
